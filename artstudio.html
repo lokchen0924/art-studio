@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>創意手作 · 藝術課程</title>
+    <!-- 使用柔和現代的字體，保持乾淨排版 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ffdbd8 0%, #ffc9c2 100%); /* 粉紅主色調背景，由淺粉到溫柔蜜桃粉 */
+            font-family: "Inter", sans-serif;
+            color: #3d2f2b; /* 深暖棕色，在粉紅底上保持清晰 */
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        /* 主卡片 — 帶有粉紅透感，保留原本乾淨層次，加入粉紅底色呼應背景 */
+        .card {
+            max-width: 1280px;
+            width: 100%;
+            background-color: #fffaf9; /* 極淡粉白，與背景融合但不失清晰 */
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -12px rgba(180, 110, 100, 0.25), 0 8px 24px -6px rgba(140, 80, 70, 0.15);
+            overflow: hidden;
+            padding: 3rem 3rem 4rem 3rem;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 220, 215, 0.6);
+            backdrop-filter: blur(2px);
+        }
+
+        /* 裝飾細線，融入粉紅元素 */
+        .divider-light {
+            height: 2px;
+            background: linear-gradient(90deg, #f5c5bc 0%, #ffdbd0 80%);
+            margin: 2.5rem 0 2rem 0;
+            width: 100%;
+            opacity: 0.6;
+        }
+
+        .divider-short {
+            width: 70px;
+            height: 3px;
+            background-color: #e7b4a8; /* 粉紅木色 */
+            margin: 1.5rem 0 2rem 0;
+            border-radius: 2px;
+        }
+
+        /* 排版區塊 */
+        .hero-tagline {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #b28278; /* 粉紅主題深一點的玫瑰色 */
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 4rem;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: #522e28; /* 深棕帶紅，與粉紅和諧 */
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        h1 i {
+            font-style: italic;
+            font-weight: 300;
+            color: #bc7a6e; /* 粉紅調的強調色 */
+        }
+
+        h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 2.3rem;
+            font-weight: 350;
+            color: #5f3b33;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        h2 em {
+            font-style: italic;
+            color: #c7877b;
+            font-weight: 300;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #5a3730;
+            margin-bottom: 0.75rem;
+        }
+
+        .lead-text {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #7b4d43;
+            max-width: 700px;
+            margin-bottom: 1.8rem;
+            line-height: 1.4;
+        }
+
+        .body-text {
+            font-size: 1.1rem;
+            color: #684b42;
+            max-width: 620px;
+            margin-bottom: 2rem;
+            font-weight: 350;
+        }
+
+        .text-soft {
+            color: #8f6358;
+            font-weight: 350;
+        }
+
+        /* 理念區塊 — 使用粉紅透白背景 */
+        .philosophy-block {
+            background-color: #fff3f0; /* 粉紅感最重區塊 */
+            padding: 2.5rem 3rem;
+            border-radius: 24px;
+            margin: 2.5rem 0 1.8rem 0;
+            border: 1px solid #ffd9d0;
+            box-shadow: inset 0 0 0 1px rgba(255, 240, 235, 0.9);
+        }
+
+        .philosophy-text {
+            font-size: 1.5rem;
+            font-weight: 330;
+            line-height: 1.5;
+            color: #4b352f;
+            font-style: normal;
+            quotes: "“" "”" "‘" "’";
+        }
+
+        .philosophy-text::before {
+            content: "“";
+            font-family: "Playfair Display", serif;
+            font-size: 3.5rem;
+            color: #e6aa9e; /* 粉紅引號 */
+            line-height: 1;
+            vertical-align: middle;
+            margin-right: 0.15rem;
+        }
+
+        .philosophy-text::after {
+            content: "”";
+            font-family: "Playfair Display", serif;
+            font-size: 3.5rem;
+            color: #e6aa9e;
+            line-height: 1;
+            vertical-align: bottom;
+            margin-left: 0.15rem;
+        }
+
+        .philosophy-author {
+            margin-top: 1.2rem;
+            font-size: 1.2rem;
+            color: #b48074;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        /* 課程等級卡片 — 粉紅主題卡片 */
+        .course-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2.8rem 0 1.5rem 0;
+        }
+
+        .course-item {
+            flex: 1 1 180px;
+            background: #ffeae5;  /* 粉紅卡底色 */
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            border: 1px solid #fccac0;
+            transition: 0.2s ease;
+            box-shadow: 0 4px 12px rgba(230, 150, 140, 0.1);
+            display: block;           /* 確保 <a> 標籤也是塊級元素 */
+            text-decoration: none;    /* 移除底線 */
+            color: inherit;           /* 繼承文字顏色 */
+        }
+
+        .course-item:hover {
+            background: #fff5f2;
+            border-color: #f6b2a4;
+            box-shadow: 0 10px 25px -10px #cb8d80;
+        }
+
+        .course-level {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: #d6897b;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .course-title {
+            font-size: 2.2rem;
+            font-weight: 350;
+            font-family: "Playfair Display", serif;
+            color: #653c33;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .course-desc {
+            font-size: 1rem;
+            color: #7b554a;
+            font-weight: 350;
+            border-top: 1px dashed #e7b7ab;
+            padding-top: 1.2rem;
+            margin-top: 0.8rem;
+        }
+
+        /* 香港地址小標 */
+        .location-badge {
+            display: inline-block;
+            background-color: #ffdad2; /* 粉紅底色 */
+            padding: 0.35rem 1.2rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #773e33;
+            letter-spacing: 0.3px;
+            margin-bottom: 1.8rem;
+            border: 1px solid #f6bcb0;
+        }
+
+        /* 按鈕風格的連結 */
+        .more-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #a66b5f;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #ecb9ad;
+            padding-bottom: 0.2rem;
+            transition: 0.15s;
+        }
+
+        .more-link:hover {
+            color: #6d3f34;
+            border-bottom-color: #c1796b;
+        }
+
+        /* 響應式微調 */
+        @media (max-width: 800px) {
+            .card {
+                padding: 2rem 1.8rem;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .philosophy-block {
+                padding: 1.8rem;
+            }
+            .philosophy-text {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .course-grid {
+                flex-direction: column;
+            }
+            .hero-tagline {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 裝飾元素：手繪感小點 */
+        .hand-drawn-line {
+            display: flex;
+            gap: 6px;
+            margin: 1rem 0 1.5rem 0;
+        }
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #eeb9ae; /* 粉紅點 */
+            border-radius: 50%;
+        }
+        /* 引用部分微調 */
+        .reference-text {
+            font-size: 1rem;
+            color: #b28276;
+            font-style: italic;
+        }
+
+        /* 下方強調區塊 粉紅底色*/
+        .highlight-pink {
+            background-color: #ffefea; 
+            padding: 2rem 2.5rem; 
+            border-radius: 30px;
+            border: 1px solid #ffd7cf;
+        }
+
+        /* ---------- 圖文並排區塊 (照片放大) ---------- */
+        .hero-section {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content {
+            flex: 1 1 300px;
+        }
+
+        .hero-image {
+            flex: 0 0 450px;  /* 從300px增加到450px，讓狗狗照片更明顯 */
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 28px;
+            box-shadow: 0 16px 32px -14px #b28b7c;
+            border: 2px solid #ffe2d9;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 900px) {
+            .hero-image {
+                flex-basis: 400px;  /* 中螢幕稍微縮小 */
+            }
+        }
+
+        @media (max-width: 800px) {
+            .hero-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .hero-image {
+                flex-basis: auto;
+                width: 100%;
+                max-width: 500px;  /* 手機上最大寬度限制 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 最上方 tagline：創意，手作，藝術。 -->
+        <div class="hero-tagline">創意，手作，藝術。</div>
+
+        <!-- 主要內容區塊：標題＋簡介＋狗狗圖片 (並排，圖片已放大) -->
+        <div class="hero-section">
+            <!-- 左側文字內容 -->
+            <div class="hero-content">
+                <h1>發現你的<br>獨特之處 <i>· 手作靈感</i></h1>
+                <p class="lead-text">
+                    我們致力於提供優質的藝術與手工課程，<br>助學生們發展創意潛能並創作出獨一無二的作品。
+                </p>
+                <div class="location-badge">📍 創意藝術 * 手作工作室</div>
+                <div class="body-text">
+                    <strong>專業手工教學</strong><br>
+                    我們位於香港的藝術手工課程提供者，致力於教授各種創意和手工藝技巧，讓學生發揮創意、放鬆身心享受手作的樂趣。無論是初學者還是高級班，都能在此找到共鳴。
+                </div>
+            </div>
+            <!-- 右側狗狗照片 (本機檔案 K2.png) -->
+           <div class="hero-image">
+                <img src="K3.png"
+                     alt="創作時光" 
+                     loading="lazy">
+            </div>
+        </div>
+
+        <!-- 短分隔線 (視覺區隔) 原本在此處，現在依然在圖文下方 -->
+        <div class="divider-short"></div>
+
+        <!-- 理念區塊：「創意教學，藝術分享 我們的理念：」+ 引號內文 -->
+        <h2>創意教學，<em>藝術分享</em> <span style="font-size: 1.8rem; margin-left: 0.5rem;">· 我們的理念</span></h2>
+
+        <div class="philosophy-block">
+            <div class="philosophy-text">
+                「藝術手工教學」是一個創意教學平台，提供多元化的藝術與手工課程，讓學生們能夠發掘自己的內在節奏，將靈感塑造成真實。
+            </div>
+            <!-- 下方加一句延伸，呼應圖片中的「我們提供專業...」 -->
+            <div style="margin-top: 1.4rem; font-size: 1.2rem; color: #7b5348; border-left: 3px solid #f0bfb3; padding-left: 1.2rem;">
+                我們提供專業的藝術與手工課程，讓學員能夠在學習過程中，學會如何將藝術與手工結合。無論您是想學習或想要提升您的藝術能力，我們都為您提供適合的課程。
+            </div>
+        </div>
+
+        <!-- 課程等級：初級班 · 中級班 · 高級班 以三張卡片呈現，現改為可點擊連結 -->
+        <h3 style="font-weight: 400; margin-bottom: 0.5rem;">級別引導 · 循序漸進</h3>
+        <div class="hand-drawn-line" aria-hidden="true">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </div>
+
+        <div class="course-grid">
+            <!-- 初級班：連結到初級.html -->
+            <a href="初級班.html" class="course-item">
+                <div class="course-level">初階</div>
+                <div class="course-title">初級班</div>
+                <div class="course-desc">
+                    探索基礎媒材，從手感出發。適合無經驗但充滿好奇的你，在輕鬆節奏中建立信心。
+                </div>
+            </a>
+
+            <!-- 中級班：連結到中級.html -->
+            <a href="中級班.html" class="course-item">
+                <div class="course-level">中階</div>
+                <div class="course-title">中級班</div>
+                <div class="course-desc">
+                    深化技法與創意整合，嘗試複合媒材。開始發展個人風格，創作出有脈絡的作品。
+                </div>
+            </a>
+
+            <!-- 高級班：連結到高級.html -->
+            <a href="高級班.html" class="course-item">
+                <div class="course-level">高階</div>
+                <div class="course-title">高級班</div>
+                <div class="course-desc">
+                    專業引導與專題創作，完成獨特系列作品。討論、策展與藝術思維並進。
+                </div>
+            </a>
+        </div>
+
+  <!-- ========== 感動說話（新） ========== -->
+        <div class="highlight-pink" style="margin-top: 3rem;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+                <div style="max-width: 600px;">
+                    <h3 style="margin-bottom: 0.5rem; font-weight: 450; color: #4b352f;">❤️ 與你一起創作</h3>
+                    <p style="font-size: 1.0rem; ccolor:#633333; line-height: 1.6;">
+                        在這裡，每一次觸碰都是真實的交流，每一件作品都是你我獨一無二的記憶。<br>
+                        放下屏幕，走進手作的溫暖世界，你會發現，最動人的藝術，就在你我之間。
+                    </p>
+                </div>
+                <!-- 裝飾性的小圖示／符號 粉紅版 -->
+                <div style="font-size: 3rem; color: #efbfb5; font-family: 'Playfair Display';">
+                    ✦
+                </div>
+            </div>
+            <!-- 保留風格句，稍微調整 -->
+            <div style="margin-top: 1.5rem; font-style: italic; color:#633333; border-top: 1px solid #f8cfc5; padding-top: 1.2rem; font-size: 1rem;">
+                「讓雙手思考，讓藝術生活化 — 讓我陪你一起創作。」
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
