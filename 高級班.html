@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初級班 · 創意手作藝術課程</title>
+    <!-- 使用與主站一致的字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #ffdbd8 0%, #ffc9c2 100%);
+            font-family: "Inter", sans-serif;
+            color: #3d2f2b;
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        /* 主卡片 */
+        .card {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fffaf9;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -12px rgba(180, 110, 100, 0.25), 0 8px 24px -6px rgba(140, 80, 70, 0.15);
+            overflow: hidden;
+            padding: 2.5rem 2.5rem 3rem 2.5rem;
+            border: 1px solid rgba(255, 220, 215, 0.6);
+            backdrop-filter: blur(2px);
+        }
+
+        /* 返回連結 */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: #b28278;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #ecb9ad;
+            padding-bottom: 0.2rem;
+            transition: 0.15s;
+        }
+        .back-link:hover {
+            color: #6d3f34;
+            border-bottom-color: #c1796b;
+        }
+
+        h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: #522e28;
+            margin-bottom: 0.5rem;
+        }
+
+        .subhead {
+            font-size: 1.2rem;
+            color: #b28278;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* 分隔線 */
+        .divider-short {
+            width: 70px;
+            height: 3px;
+            background-color: #e7b4a8;
+            margin: 1.5rem 0 2rem 0;
+            border-radius: 2px;
+        }
+
+        h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.8rem;
+            font-weight: 350;
+            color: #5f3b33;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .info-block {
+            background-color: #fff3f0;
+            padding: 1.8rem 2rem;
+            border-radius: 24px;
+            margin: 1.5rem 0;
+            border: 1px solid #ffd9d0;
+        }
+
+        .info-item {
+            margin-bottom: 1.2rem;
+        }
+        .info-item strong {
+            color: #773e33;
+            font-weight: 600;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 350;
+            color: #a55b4c;
+            font-family: "Playfair Display", serif;
+        }
+        .price small {
+            font-size: 1rem;
+            color: #b28278;
+            font-weight: 300;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #f0c5bb;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-list li::before {
+            content: "✧";
+            color: #e6aa9e;
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .contact-note {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #fad9d0;
+            text-align: center;
+            font-size: 1rem;
+            color: #8f6358;
+        }
+        .contact-note a {
+            color: #b05b4b;
+            text-decoration: none;
+            border-bottom: 1px solid #f6bcb0;
+        }
+        .contact-note a:hover {
+            color: #6d3f34;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 1.8rem;
+            }
+            h1 {
+                font-size: 2.4rem;
+            }
+            .price {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 返回主頁連結（假設主頁為 index.html） -->
+        <a href="Kitty 工作室.html" class="back-link">← 返回主頁</a>
+
+        <h1>高級班</h1>
+        <div class="subhead">適合無經驗 · 從手感出發</div>
+
+        <p style="font-size: 1.2rem; color: #684b42; margin-bottom: 1rem;">
+            透過輕鬆的節奏，帶領您進入手工藝術的世界。小班教學，專注基礎技法與創意啟發。
+        </p>
+
+        <div class="divider-short"></div>
+
+        <h2>📖 學習內容</h2>
+        <div class="info-block">
+            <ul class="feature-list">
+                <li><strong>工具認識</strong> — 基本雕刻刀、畫筆、黏土工具介紹與安全使用</li>
+                <li><strong>手捏陶藝</strong> — 親手塑形，製作小器皿或擺設</li>
+                <li><strong>基礎繪畫</strong> — 水彩、粉彩、壓克力入門技法</li>
+                <li><strong>拼貼創作</strong> — 利用不同紙材與複合媒材組合</li>
+                <li><strong>完成作品</strong> — 每堂帶回一件小作品，期末完成一件主題創作</li>
+            </ul>
+        </div>
+
+        <h2>💰 收費方式</h2>
+        <div class="info-block" style="background-color: #ffefea;">
+            <div class="info-item">
+                <strong>常規課程</strong> 
+                <span class="price">HKD 2,400 <small>/ 8堂 (每堂2小時)</small></span>
+                <div style="margin-top: 0.3rem; color: #b05b4b;">✓ 已包含所有材料費</div>
+            </div>
+            <div class="info-item">
+                <strong>單堂體驗</strong> 
+                <span class="price">HKD 350 <small>/ 堂 (需預約)</small></span>
+                <div style="margin-top: 0.3rem; color: #b05b4b;">✓ 包含基本材料，作品可帶回</div>
+            </div>
+            <div style="background-color: #ffe1d9; padding: 0.8rem; border-radius: 20px; margin-top: 0.8rem; font-size: 0.95rem;">
+                ✦ 早鳥優惠：開課前一週報名可享 9 折 | 兩人同行各減 HKD 100
+            </div>
+        </div>
+
+        <h2>📅 上課時間</h2>
+        <div class="info-block" style="padding: 1.2rem 2rem;">
+            <p><strong>週三班</strong> 19:00 – 21:00 (10/4 開課)</p>
+            <p><strong>週六班</strong> 14:00 – 16:00 (10/7 開課)</p>
+            <p style="margin-top: 0.8rem; color: #773e33;">名額有限，歡迎查詢。</p>
+        </div>
+
+        <!-- 聯絡方式 (與主站一致) -->
+        <div class="contact-note">
+            <p>📍 九龍長沙灣光昌街3號鴻昌工廠大厦7樓F座709室</p>
+            <p>
+                <a href="https://api.whatsapp.com/send?phone=85294778431">📱 WhatsApp 報名及查詢：9477 8431</a>
+                <br>📧 info@influence.hk
+            </p>
+            <p style="margin-top: 1rem;">「讓雙手思考，讓藝術生活化 — 期待與你一起創作」</p>
+        </div>
+    </div>
+</body>
+</html>
