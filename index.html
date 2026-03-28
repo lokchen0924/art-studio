@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>想點就點 Dim Sum | 中式點心·小菜專門店</title>
-    <!-- Google Fonts 引入現代中文字體與英文字體 -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (免費圖標庫) -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -30,6 +30,7 @@
             --black-bg: #0B0B0B;
             --black-card: #141414;
             --text-muted: #BCBCBC;
+            --header-height: 85px;
         }
 
         .container {
@@ -108,6 +109,7 @@
             font-weight: 500;
             transition: 0.2s;
             font-size: 1rem;
+            cursor: pointer;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -373,6 +375,9 @@
                 width: 70px;
                 height: 70px;
             }
+            :root {
+                --header-height: 125px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -395,7 +400,7 @@
 </head>
 <body>
 
-<header>
+<header id="main-header">
     <div class="container header-inner">
         <div class="brand-chef">
             <div class="restaurant-name">
@@ -409,10 +414,10 @@
             </div>
         </div>
         <div class="nav-links">
-            <a href="#" class="active">首頁</a>
-            <a href="#">點心精選</a>
-            <a href="#">小菜美饌</a>
-            <a href="#">訂座</a>
+            <a data-scroll="home">首頁</a>
+            <a data-scroll="dimsum">點心精選</a>
+            <a data-scroll="dishes">小菜美饌</a>
+            <a data-scroll="reservation">訂座</a>
         </div>
     </div>
 </header>
@@ -435,7 +440,7 @@
         </div>
     </div>
 
-    <div>
+    <div id="gallery">
         <h2 class="section-title">雅致環境 · 中式韻味</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
@@ -466,7 +471,8 @@
     </div>
 
     <div class="menu-showcase">
-        <div class="menu-category">
+        <!-- 點心區 (午市) 加上 id 方便滾動 -->
+        <div id="dimsum-section" class="menu-category">
             <h2><i class="fas fa-dumpling" style="margin-right: 8px;"></i> 午市巧手點心</h2>
             <div class="food-grid">
                 <div class="food-card">
@@ -474,7 +480,7 @@
                     <div class="food-info">
                         <h3>水晶蝦餃皇</h3>
                         <p>原隻大蝦，薄皮透亮，鮮甜爽彈</p>
-                        <span class="price-tag">午市精選 £10</span>
+                        <span class="price-tag">午市精選 £14</span>
                     </div>
                 </div>
                 <div class="food-card">
@@ -482,7 +488,7 @@
                     <div class="food-info">
                         <h3>蟹籽燒賣皇</h3>
                         <p>豬肉與鮮蝦完美比例，蟹籽點綴</p>
-                        <span class="price-tag">午市必點 £12</span>
+                        <span class="price-tag">午市必點 £14</span>
                     </div>
                 </div>
                 <div class="food-card">
@@ -490,7 +496,7 @@
                     <div class="food-info">
                         <h3>蜜汁叉燒包</h3>
                         <p>軟綿麵皮，甜香叉燒內餡</p>
-                        <span class="price-tag">傳統滋味 £12</span>
+                        <span class="price-tag">傳統滋味 £14</span>
                     </div>
                 </div>
                 <div class="food-card">
@@ -498,13 +504,14 @@
                     <div class="food-info">
                         <h3>酥皮蛋撻仔</h3>
                         <p>層層酥脆，蛋香濃郁 飯後甜點</p>
-                        <span class="price-tag">£9 / 兩件</span>
+                        <span class="price-tag">£12 / 兩件</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="menu-category">
+        <!-- 小菜區 (晚市) 加上 id 方便滾動 -->
+        <div id="dishes-section" class="menu-category">
             <h2><i class="fas fa-utensils" style="margin-right: 8px;"></i> 晚市鑊氣小菜</h2>
             <div class="food-grid">
                 <div class="food-card">
@@ -512,7 +519,7 @@
                     <div class="food-info">
                         <h3>川味宮保雞丁</h3>
                         <p>香辣惹味，花生脆口，雞肉嫩滑</p>
-                        <span class="price-tag">晚市推介 £16</span>
+                        <span class="price-tag">晚市推介 £22</span>
                     </div>
                 </div>
                 <div class="food-card">
@@ -520,7 +527,7 @@
                     <div class="food-info">
                         <h3>金銀蒜炒時蔬</h3>
                         <p>時令蔬菜，大火快炒，清爽解膩</p>
-                        <span class="price-tag">£12</span>
+                        <span class="price-tag">£18</span>
                     </div>
                 </div>
                 <div class="food-card">
@@ -528,7 +535,7 @@
                     <div class="food-info">
                         <h3>豉汁排骨煲仔飯</h3>
                         <p>經典煲仔，豆豉蒜香，飯焦香脆</p>
-                        <span class="price-tag">£16</span>
+                        <span class="price-tag">£22</span>
                     </div>
                 </div>
                 <div class="food-card">
@@ -536,14 +543,14 @@
                     <div class="food-info">
                         <h3>黑椒安格斯牛柳粒</h3>
                         <p>濃郁黑椒醬汁，牛肉軟腍多汁</p>
-                        <span class="price-tag">£18</span>
+                        <span class="price-tag">£25</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="info-section">
+    <div id="reservation-section" class="info-section">
         <div class="info-card">
             <i class="fas fa-clock"></i>
             <h4>營業時間</h4>
@@ -554,14 +561,14 @@
         <div class="info-card">
             <i class="fas fa-map-marker-alt"></i>
             <h4>地址</h4>
-            <p>英國<br>市<br>區</p>
+            <p>英國<br>省<br>區</p>
         </div>
         <div class="info-card">
             <i class="fas fa-phone-alt"></i>
             <h4>訂座專線</h4>
             <p>WhatsApp : 44 7708 108088<br>歡迎預約 團體聚餐</p>
             <!-- 立即訂座按鈕 - 直接連結 WhatsApp +447708108088 -->
-            <a href="https://wa.me/447708108088" class="btn-reserve" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/447708108088?text=你好，我想預訂想點就點Dim Sum的座位" class="btn-reserve" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp"></i> 立即訂座
             </a>
         </div>
@@ -570,33 +577,99 @@
 
 <footer>
     <div class="container">
-        <p>想點就點 · 傳承經典 | 用心製作每一道點心與小菜</p>
+        <p>© 2025 想點就點 Dim Sum · 傳承經典 創新粵味 | 用心製作每一道點心與小菜</p>
         <p style="margin-top: 8px; font-size: 0.7rem;">圖片為環境及菜式參考，實物以餐廳出品為準</p>
     </div>
 </footer>
 
 <script>
-    // 導航欄平滑滾動與 active 狀態管理
-    document.querySelectorAll('.nav-links a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            this.classList.add('active');
-            const text = this.innerText.trim();
-            if(text.includes('首頁')) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if(text.includes('點心')) {
-                const点心区 = document.querySelector('.menu-category:first-child');
-                if(点心区)点心区.scrollIntoView({ behavior: 'smooth' });
-            } else if(text.includes('小菜')) {
-                const小菜区 = document.querySelector('.menu-category:last-child');
-                if(小菜区)小菜区.scrollIntoView({ behavior: 'smooth' });
-            } else if(text.includes('訂座')) {
-                const infoSection = document.querySelector('.info-section');
-                if(infoSection) infoSection.scrollIntoView({ behavior: 'smooth' });
-            }
+    (function() {
+        // 獲取 header 高度，用於滾動補償
+        const header = document.getElementById('main-header');
+        const getHeaderHeight = () => {
+            return header ? header.offsetHeight : 85;
+        };
+
+        // 平滑滾動到指定元素，並補償固定標題高度
+        function scrollToElement(element) {
+            if (!element) return;
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - getHeaderHeight() - 16; // 多一點緩衝
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // 處理導航點擊，保留 active 樣式
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = {
+            home: null,        // 首頁滾到頂部
+            dimsum: document.getElementById('dimsum-section'),
+            dishes: document.getElementById('dishes-section'),
+            reservation: document.getElementById('reservation-section')
+        };
+
+        // 移除所有 active 類
+        function removeActive() {
+            navLinks.forEach(link => link.classList.remove('active'));
+        }
+
+        // 設定 active 根據當前滾動（可選，保留導航高亮），但為了簡單，點擊時設定
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const scrollTarget = this.getAttribute('data-scroll');
+                removeActive();
+                this.classList.add('active');
+
+                if (scrollTarget === 'home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (scrollTarget === 'dimsum' && sections.dimsum) {
+                    scrollToElement(sections.dimsum);
+                } else if (scrollTarget === 'dishes' && sections.dishes) {
+                    scrollToElement(sections.dishes);
+                } else if (scrollTarget === 'reservation' && sections.reservation) {
+                    scrollToElement(sections.reservation);
+                }
+            });
         });
-    });
+
+        // 可選：監聽滾動來自動更新 active 狀態（增強體驗）
+        function updateActiveOnScroll() {
+            const scrollPos = window.scrollY + getHeaderHeight() + 50;
+            const dimsumSection = sections.dimsum;
+            const dishesSection = sections.dishes;
+            const reservationSection = sections.reservation;
+            
+            let activeId = 'home';
+            if (dimsumSection && scrollPos >= dimsumSection.offsetTop) {
+                activeId = 'dimsum';
+            }
+            if (dishesSection && scrollPos >= dishesSection.offsetTop) {
+                activeId = 'dishes';
+            }
+            if (reservationSection && scrollPos >= reservationSection.offsetTop) {
+                activeId = 'reservation';
+            }
+            // 如果已經滾回頂部附近
+            if (window.scrollY < 100) {
+                activeId = 'home';
+            }
+            
+            navLinks.forEach(link => {
+                const target = link.getAttribute('data-scroll');
+                if (target === activeId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveOnScroll);
+        updateActiveOnScroll(); // 初始設定
+    })();
 </script>
 </body>
 </html>
