@@ -17,32 +17,27 @@
 
         body {
             font-family: 'Noto Sans TC', 'Inter', sans-serif;
-            background-color: #0a0a0a; /* 黑色基底 */
+            background-color: #0a0a0a;
             color: #f0f0f0;
             line-height: 1.5;
             scroll-behavior: smooth;
         }
 
-        /* 主色調：橙 #F47C2E / 黑 #111 與 #1e1e1e */
         :root {
             --orange: #F47C2E;
             --orange-dark: #D9641A;
             --orange-light: #FF9F5C;
             --black-bg: #0B0B0B;
             --black-card: #141414;
-            --gray-border: #2A2A2A;
-            --text-light: #F5F5F5;
             --text-muted: #BCBCBC;
         }
 
-        /* 容器 */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* 頭部區域 */
         header {
             background: linear-gradient(135deg, #0a0a0a 0%, #141414 100%);
             border-bottom: 2px solid var(--orange);
@@ -61,7 +56,6 @@
             gap: 20px;
         }
 
-        /* 餐廳名稱 + 大廚相片 (側邊) */
         .brand-chef {
             display: flex;
             align-items: center;
@@ -88,11 +82,6 @@
             margin-top: 4px;
         }
 
-        /* 大廚相片樣式 */
-        .chef-photo {
-            flex-shrink: 0;
-        }
-
         .chef-photo img {
             width: 85px;
             height: 85px;
@@ -101,7 +90,6 @@
             border: 3px solid var(--orange);
             box-shadow: 0 8px 20px rgba(244, 124, 46, 0.3);
             transition: transform 0.3s ease;
-            background: #2c2c2c;
         }
 
         .chef-photo img:hover {
@@ -109,7 +97,6 @@
             border-color: var(--orange-light);
         }
 
-        /* 導航簡潔 */
         .nav-links {
             display: flex;
             gap: 28px;
@@ -121,7 +108,6 @@
             font-weight: 500;
             transition: 0.2s;
             font-size: 1rem;
-            letter-spacing: 1px;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -130,7 +116,6 @@
             padding-bottom: 6px;
         }
 
-        /* 午市晚市標籤區塊 */
         .session-banner {
             background: linear-gradient(95deg, #1c1c1c 0%, #000000 100%);
             border-left: 6px solid var(--orange);
@@ -168,11 +153,9 @@
 
         .session-info p {
             font-size: 1rem;
-            font-weight: 400;
             color: #ddd;
         }
 
-        /* 通用標題 */
         .section-title {
             font-size: 2rem;
             font-weight: 700;
@@ -191,7 +174,6 @@
             border-radius: 4px;
         }
 
-        /* 環境相片網格 */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -205,7 +187,6 @@
             overflow: hidden;
             transition: 0.3s ease;
             border: 1px solid #2c2c2c;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.4);
         }
 
         .gallery-item:hover {
@@ -220,10 +201,6 @@
             object-fit: cover;
             display: block;
             transition: 0.4s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.02);
         }
 
         .gallery-caption {
@@ -241,7 +218,6 @@
             margin-top: 6px;
         }
 
-        /* 點心 & 小菜 雙欄區域 */
         .menu-showcase {
             display: flex;
             flex-direction: column;
@@ -270,7 +246,6 @@
             overflow: hidden;
             transition: all 0.25s;
             border: 1px solid #262626;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .food-card:hover {
@@ -282,7 +257,6 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            background: #2a2a2a;
         }
 
         .food-info {
@@ -299,7 +273,6 @@
         .food-info p {
             font-size: 0.85rem;
             color: #b0b0b0;
-            line-height: 1.4;
         }
 
         .price-tag {
@@ -313,7 +286,6 @@
             color: var(--orange);
         }
 
-        /* 預約/營業時間區塊 */
         .info-section {
             background: #0e0e0e;
             border-radius: 32px;
@@ -348,7 +320,9 @@
         }
 
         .btn-reserve {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: var(--orange);
             color: #111;
             font-weight: bold;
@@ -357,7 +331,6 @@
             text-decoration: none;
             margin-top: 20px;
             transition: 0.2s;
-            border: none;
             font-size: 1rem;
         }
 
@@ -367,7 +340,6 @@
             box-shadow: 0 0 12px rgba(244,124,46,0.6);
         }
 
-        /* 頁腳 */
         footer {
             background: #030303;
             border-top: 1px solid var(--orange);
@@ -378,7 +350,6 @@
             font-size: 0.85rem;
         }
 
-        /* 響應式調整 */
         @media (max-width: 768px) {
             .header-inner {
                 flex-direction: column;
@@ -395,9 +366,6 @@
             .session-card {
                 width: 100%;
             }
-            .section-title {
-                font-size: 1.8rem;
-            }
             .restaurant-name h1 {
                 font-size: 1.6rem;
             }
@@ -411,15 +379,8 @@
             .container {
                 padding: 0 16px;
             }
-            .brand-chef {
-                gap: 12px;
-            }
-            .food-grid, .gallery-grid {
-                gap: 18px;
-            }
         }
 
-        /* 自定義滾動條 */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -436,14 +397,12 @@
 
 <header>
     <div class="container header-inner">
-        <!-- 左側：餐廳名稱 + 大廚相片 (側邊) -->
         <div class="brand-chef">
             <div class="restaurant-name">
                 <h1>想點就點 <span style="color: var(--orange);">Dim Sum</span></h1>
                 <p>· 即蒸即製 · 鑊氣小菜 ·</p>
             </div>
             <div class="chef-photo">
-                <!-- 大廚真實照片（免費圖庫pexels chef肖像，符合中式廚房意象） -->
                 <img src="fai.jpeg"
                      alt="大廚張師傅"
                      title="行政總廚 - 張師傅">
@@ -459,7 +418,6 @@
 </header>
 
 <main class="container">
-    <!-- 午市/晚市 資訊區塊 -->
     <div class="session-banner">
         <div class="session-card">
             <i class="fas fa-sun"></i>
@@ -477,7 +435,6 @@
         </div>
     </div>
 
-    <!-- 環境相片介紹 三張 -->
     <div>
         <h2 class="section-title">雅致環境 · 中式韻味</h2>
         <div class="gallery-grid">
@@ -485,13 +442,13 @@
                 <img src="fai9.png" 
                      alt="典雅大廳 中式風格">
                 <div class="gallery-caption">
-                    📍 雅致環境 · 細味時光 
+                    📍 雅致環境 · 細味時光
                     <p>優閒雅致，舒適聚餐空間</p>
                 </div>
             </div>
             <div class="gallery-item">
                 <img src="fai10.png" 
-                     alt="溫馨舒適">
+                     alt="半開放式包廂">
                 <div class="gallery-caption">
                     🍂 溫馨舒適 · 與家常味
                     <p>隨心設計，盡顯歡樂氛圍</p>
@@ -499,7 +456,7 @@
             </div>
             <div class="gallery-item">
                 <img src="fai11.png" 
-                     alt="整潔廚房 · 巧手美點">
+                     alt="開放式廚房 明爐燒味">
                 <div class="gallery-caption">
                     🔥 明檔廚房 · 即席烹調
                     <p>新鮮食材，呈現真摯美味</p>
@@ -508,15 +465,12 @@
         </div>
     </div>
 
-    <!-- 點心及小菜照片區 (午市點心/晚市小菜分開展) -->
     <div class="menu-showcase">
-        <!-- 點心區 (午市) -->
         <div class="menu-category">
             <h2><i class="fas fa-dumpling" style="margin-right: 8px;"></i> 午市巧手點心</h2>
             <div class="food-grid">
                 <div class="food-card">
-                    <img src="蝦餃.png" 
-                         alt="水晶蝦餃皇">
+                    <img src="food1.png" alt="水晶蝦餃皇">
                     <div class="food-info">
                         <h3>水晶蝦餃皇</h3>
                         <p>原隻大蝦，薄皮透亮，鮮甜爽彈</p>
@@ -524,8 +478,7 @@
                     </div>
                 </div>
                 <div class="food-card">
-                    <img src="燒賣.png" 
-                         alt="蟹籽燒賣皇">
+                    <img src="food2.png" alt="蟹籽燒賣皇">
                     <div class="food-info">
                         <h3>蟹籽燒賣皇</h3>
                         <p>豬肉與鮮蝦完美比例，蟹籽點綴</p>
@@ -533,8 +486,7 @@
                     </div>
                 </div>
                 <div class="food-card">
-                    <img src="叉燒包.jpg" 
-                         alt="蜜汁叉燒包">
+                    <img src="food3.jpg" alt="蜜汁叉燒包">
                     <div class="food-info">
                         <h3>蜜汁叉燒包</h3>
                         <p>軟綿麵皮，甜香叉燒內餡</p>
@@ -542,8 +494,7 @@
                     </div>
                 </div>
                 <div class="food-card">
-                    <img src="蛋達仔.jpg" 
-                         alt="酥皮蛋撻仔">
+                    <img src="food4.jpg" alt="酥皮蛋撻仔">
                     <div class="food-info">
                         <h3>酥皮蛋撻仔</h3>
                         <p>層層酥脆，蛋香濃郁 飯後甜點</p>
@@ -553,13 +504,11 @@
             </div>
         </div>
 
-        <!-- 小菜區 (晚市) -->
         <div class="menu-category">
             <h2><i class="fas fa-utensils" style="margin-right: 8px;"></i> 晚市鑊氣小菜</h2>
             <div class="food-grid">
                 <div class="food-card">
-                    <img src="川味宮保雞丁.jpg" 
-                         alt="宮保雞丁">
+                    <img src="food5.jpg" alt="宮保雞丁">
                     <div class="food-info">
                         <h3>川味宮保雞丁</h3>
                         <p>香辣惹味，花生脆口，雞肉嫩滑</p>
@@ -567,8 +516,7 @@
                     </div>
                 </div>
                 <div class="food-card">
-                    <img src="金銀蒜炒時蔬.png" 
-                         alt="蒜蓉炒時蔬">
+                    <img src="food6.png" alt="蒜蓉炒時蔬">
                     <div class="food-info">
                         <h3>金銀蒜炒時蔬</h3>
                         <p>時令蔬菜，大火快炒，清爽解膩</p>
@@ -576,8 +524,7 @@
                     </div>
                 </div>
                 <div class="food-card">
-                    <img src="豉汁排骨煲仔飯.jpg" 
-                         alt="豉汁蒸排骨">
+                    <img src="food7.jpg" alt="豉汁蒸排骨">
                     <div class="food-info">
                         <h3>豉汁排骨煲仔飯</h3>
                         <p>經典煲仔，豆豉蒜香，飯焦香脆</p>
@@ -585,8 +532,7 @@
                     </div>
                 </div>
                 <div class="food-card">
-                    <img src="牛柳粒.jpg" 
-                         alt="黑椒牛柳粒">
+                    <img src="food8.jpg" alt="黑椒牛柳粒">
                     <div class="food-info">
                         <h3>黑椒安格斯牛柳粒</h3>
                         <p>濃郁黑椒醬汁，牛肉軟腍多汁</p>
@@ -597,7 +543,6 @@
         </div>
     </div>
 
-    <!-- 額外介紹 + 預約資訊 與 營業時間 -->
     <div class="info-section">
         <div class="info-card">
             <i class="fas fa-clock"></i>
@@ -609,17 +554,15 @@
         <div class="info-card">
             <i class="fas fa-map-marker-alt"></i>
             <h4>地址</h4>
-            <p>英國<br>地下<br>(近出口)</p>
+            <p>香港灣仔軒尼詩道123號<br>想點大廈2樓全層<br>(灣仔地鐵站A出口步行3分鐘)</p>
         </div>
         <div class="info-card">
             <i class="fas fa-phone-alt"></i>
             <h4>訂座專線</h4>
-            <p>+852 2881 2233<br>WhatsApp : 9123 4567<br>歡迎預約 團體聚餐</p>
+            <p>WhatsApp : 44 7708 108088<br>歡迎預約 團體聚餐</p>
             <!-- 立即訂座按鈕 - 直接連結 WhatsApp +447708108088 -->
             <a href="https://wa.me/447708108088" class="btn-reserve" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp"></i> 立即訂座
-            </a>
-        </div>
             </a>
         </div>
     </div>
@@ -627,42 +570,33 @@
 
 <footer>
     <div class="container">
-        <p>想點就點 · 傳承經典  | 用心製作每一道點心與小菜</p>
+        <p>想點就點 · 傳承經典 | 用心製作每一道點心與小菜</p>
         <p style="margin-top: 8px; font-size: 0.7rem;">圖片為環境及菜式參考，實物以餐廳出品為準</p>
     </div>
 </footer>
 
-<!-- 簡單的平滑錨點輔助與頁面互動（純裝飾） -->
 <script>
-    // 讓所有導航欄點擊平滑移動（示範功能，無實際跳轉段落可做保留效果）
+    // 導航欄平滑滾動與 active 狀態管理
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            // 此處不做實際跳轉 僅做演示active效果，但為體驗保留輕提示
             e.preventDefault();
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             this.classList.add('active');
-            // 簡單滾動至頂部或不同區塊？為了體驗，點擊首頁回到頂部
-            if(this.innerText.includes('首頁')) {
+            const text = this.innerText.trim();
+            if(text.includes('首頁')) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if(this.innerText.includes('點心')) {
-                document.querySelector('.menu-category:first-child').scrollIntoView({ behavior: 'smooth' });
-            } else if(this.innerText.includes('小菜')) {
-                document.querySelector('.menu-category:last-child').scrollIntoView({ behavior: 'smooth' });
-            } else if(this.innerText.includes('訂座')) {
-                document.querySelector('.info-section').scrollIntoView({ behavior: 'smooth' });
+            } else if(text.includes('點心')) {
+                const点心区 = document.querySelector('.menu-category:first-child');
+                if(点心区)点心区.scrollIntoView({ behavior: 'smooth' });
+            } else if(text.includes('小菜')) {
+                const小菜区 = document.querySelector('.menu-category:last-child');
+                if(小菜区)小菜区.scrollIntoView({ behavior: 'smooth' });
+            } else if(text.includes('訂座')) {
+                const infoSection = document.querySelector('.info-section');
+                if(infoSection) infoSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
-    // 預約按鈕模擬提示
-    const btn = document.querySelector('.btn-reserve');
-    if(btn) {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('📞 歡迎致電 +44 7708 108088 預約，或親臨本店。期待您的光臨！');
-        });
-    }
-    // 加載完後隨機動效 (錦上添花)
-    console.log('想點就點 Dim Sum — 以食會友');
 </script>
 </body>
 </html>
