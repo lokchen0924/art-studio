@@ -83,7 +83,7 @@
             margin-top: 4px;
         }
 
-        /* 大廚相片樣式，並添加游標為指針，表示可點擊 */
+        /* 大廚相片樣式 */
         .chef-photo {
             flex-shrink: 0;
             cursor: pointer;
@@ -93,8 +93,8 @@
             height: 85px;
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid var(--white);
-            box-shadow: 0 8px 20px rgba(241, 240, 239, 0.925);
+            border: 3px solid var(--orange);
+            box-shadow: 0 8px 20px rgba(244, 124, 46, 0.3);
             transition: transform 0.3s ease;
             background: #2c2c2c;
         }
@@ -231,6 +231,7 @@
             overflow: hidden;
             transition: 0.3s ease;
             border: 1px solid #2c2c2c;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
@@ -245,6 +246,7 @@
             object-fit: cover;
             display: block;
             transition: 0.4s;
+            pointer-events: none;
         }
 
         .gallery-caption {
@@ -290,6 +292,7 @@
             overflow: hidden;
             transition: all 0.25s;
             border: 1px solid #262626;
+            cursor: pointer;
         }
 
         .food-card:hover {
@@ -301,6 +304,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
+            pointer-events: none;
         }
 
         .food-info {
@@ -394,7 +398,105 @@
             font-size: 0.85rem;
         }
 
-        /* 通用燈箱模態框 (給大廚圖片和餐牌共用基本樣式，但餐牌另有專用輪播) */
+        /* 通用輪播燈箱（支援滑動瀏覽） */
+        .carousel-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: default;
+        }
+        .modal-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            touch-action: pan-y pinch-zoom;
+        }
+        .carousel-img {
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 3px solid var(--orange);
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+            transition: opacity 0.2s ease-in-out;
+            opacity: 1;
+            pointer-events: none;
+        }
+        .close-carousel {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: 0.2s;
+        }
+        .close-carousel:hover {
+            color: var(--orange);
+        }
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+        .carousel-nav button {
+            pointer-events: auto;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-nav button:hover {
+            background: var(--orange);
+            color: #111;
+            transform: scale(1.05);
+        }
+        .carousel-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: rgba(0,0,0,0.6);
+            display: inline-block;
+            margin: 0 auto;
+            width: fit-content;
+            padding: 6px 16px;
+            border-radius: 40px;
+            color: white;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+        }
+
+        /* 大廚專用燈箱 */
         .chef-modal {
             display: none;
             position: fixed;
@@ -431,102 +533,6 @@
             color: var(--orange);
         }
 
-        /* 餐牌輪播燈箱 */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.92);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            cursor: default;
-        }
-        .modal-container {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-img {
-            max-width: 90vw;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 12px;
-            border: 3px solid var(--orange);
-            box-shadow: 0 0 30px rgba(0,0,0,0.6);
-            transition: opacity 0.2s ease-in-out;
-            opacity: 1;
-        }
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-            transition: 0.2s;
-        }
-        .close-modal:hover {
-            color: var(--orange);
-        }
-        .modal-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-            pointer-events: none;
-        }
-        .modal-nav button {
-            pointer-events: auto;
-            background: rgba(0,0,0,0.6);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.2s;
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-nav button:hover {
-            background: var(--orange);
-            color: #111;
-            transform: scale(1.05);
-        }
-        .modal-counter {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            background: rgba(0,0,0,0.6);
-            display: inline-block;
-            margin: 0 auto;
-            width: fit-content;
-            padding: 6px 16px;
-            border-radius: 40px;
-            color: white;
-            font-size: 0.9rem;
-            backdrop-filter: blur(4px);
-            pointer-events: none;
-        }
-
         @media (max-width: 768px) {
             .header-inner {
                 flex-direction: column;
@@ -560,7 +566,7 @@
                 width: 70px;
                 height: 70px;
             }
-            .modal-nav button {
+            .carousel-nav button {
                 width: 36px;
                 height: 36px;
                 font-size: 1.5rem;
@@ -599,10 +605,10 @@
     <div class="container header-inner">
         <div class="brand-chef">
             <div class="restaurant-name">
-                <h1>點廚 <br><span style="color: var(--orange);">Dim Sum+Kitchen</span></h1></br>
+               <h1>點廚 <br><span style="color: var(--orange);">Dim Sum+Kitchen</span></h1></br>
                 <p>· 即蒸即製點心 · 鑊氣巧手小菜 ·</p>
             </div>
-            <div class="chef-photo" id="chefPhoto">
+              <div class="chef-photo" id="chefPhoto">
                 <img src="logo2.png"
                      alt="logo"
                      title="logo">
@@ -637,12 +643,12 @@
             <div class="session-info">
                 <i class="fas fa-moon"></i>
                 <div class="session-text">
-                    <h3>晚市 · 鑊氣巧手小菜</h3>
+                       <h3>晚市 · 鑊氣巧手小菜</h3>
                     <p>營業時間 17:00pm - 21:30pm | 鑊氣巧手 地道粵式小菜</p>
                 </div>
             </div>
             <div class="menu-photo">
-                <img src="dinnermeun.jpg" 
+                 <img src="dinnermenu.jpg" 
                      alt="晚市小菜餐牌">
             </div>
         </div>
@@ -650,16 +656,16 @@
 
     <div id="gallery">
         <h2 class="section-title">雅致環境 · 中式韻味</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
+        <div class="gallery-grid" id="environmentGrid">
+            <div class="gallery-item" data-env-index="0">
                 <img src="fp00.png" 
                      alt="交通方便">
                 <div class="gallery-caption">
-                    📍 交通方便 
-                    <p>環境舒適</p>
+                    📍 環境舒適
+                    <p>環境舒適寧靜</p>
                 </div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item" data-env-index="1">
                 <img src="fp1.png" 
                      alt="典雅大廳 中式風格">
                 <div class="gallery-caption">
@@ -667,7 +673,7 @@
                     <p>優閒雅致，舒適聚餐空間</p>
                 </div>
             </div>
-            <div class="gallery-item">
+            <div class="gallery-item" data-env-index="2">
                 <img src="fp2.png" 
                      alt="開放式大廳">
                 <div class="gallery-caption">
@@ -675,44 +681,43 @@
                     <p>新鮮食材，呈現真摯美味</p>
                 </div>
             </div>
-           
         </div>
     </div>
 
     <div class="menu-showcase">
         <div id="dimsum-section" class="menu-category">
             <h2><i class="fas fa-dumpling" style="margin-right: 8px;"></i> 午市巧手點心</h2>
-            <div class="food-grid">
-                <div class="food-card">
-                    <img src="food1.png" alt="明蝦角">
+            <div class="food-grid" id="dimsumGrid">
+                <div class="food-card" data-dish-index="0">
+                   <img src="food1.png" alt="明蝦角">
                     <div class="food-info">
                         <h3>明蝦角</h3>
                         <p>原隻大蝦，口感爽脆鮮甜</p>
-                       
+
                     </div>
                 </div>
-                <div class="food-card">
+                <div class="food-card" data-dish-index="1">
                     <img src="food2.png" alt="蟹籽燒賣皇">
                     <div class="food-info">
                         <h3>蟹籽燒賣皇</h3>
-                        <p>豬肉與鮮蝦完美比例，蟹籽點綴</p>
-                        
+                        <p>完美比例，蟹籽點綴</p>
+
                     </div>
                 </div>
-                <div class="food-card">
+                <div class="food-card" data-dish-index="2">
                     <img src="food3.png" alt="XO醬炒蘿蔔糕">
                     <div class="food-info">
                         <h3>XO醬炒蘿蔔糕</h3>
                         <p>外層香脆，內裡清甜軟糯</p>
-                        
+
                     </div>
                 </div>
-                <div class="food-card">
+                <div class="food-card" data-dish-index="3">
                     <img src="food4.png" alt="燒鴨湯瀨粉">
                     <div class="food-info">
                         <h3>燒鴨湯瀨粉</h3>
                         <p>琥珀皮色，鮮嫩多汁</p>
-                    <span class="price-tag">午市必點</span>   
+                    <span class="price-tag">午市必點</span> 
                     </div>
                 </div>
             </div>
@@ -720,38 +725,37 @@
 
         <div id="dishes-section" class="menu-category">
             <h2><i class="fas fa-utensils" style="margin-right: 8px;"></i> 晚市鑊氣小菜</h2>
-            <div class="food-grid">
-                <div class="food-card">
-                    <img src="food5.png">
+            <div class="food-grid" id="dinnerGrid">
+                <div class="food-card" data-dish-index="0">
+                     <img src="food5.png">
                     <div class="food-info">
                         <h3>肉絲脆麵</h3>
                         <p>惹味脆口，肉絲嫩滑多汁</p>
                         <span class="price-tag">人氣推介</span>
-                        
                     </div>
                 </div>
-               <div class="food-card">
-                    <img src="food6.png" alt="波蘿咕嚕肉">
+                <div class="food-card" data-dish-index="1">
+                     <img src="food6.png" alt="波蘿咕嚕肉">
                     <div class="food-info">
                         <h3>波蘿咕嚕肉</h3>
                         <p>菠蘿解膩提鮮，咕嚕肉酥脆不油膩</p>
-                       
+
                     </div>
                 </div>
-              <div class="food-card">
-                    <img src="food7.png" alt="紫菜墨魚餅">
+                <div class="food-card" data-dish-index="2">
+                   <img src="food7.png" alt="紫菜墨魚餅">
                     <div class="food-info">
                         <h3>紫菜墨魚餅</h3>
                         <p>外皮酥脆，墨魚肉紫菜包覆，香氣加倍</p>
-                       
+
                     </div>
                 </div>
-              <div class="food-card">
-                    <img src="food8.png" alt="蒜蓉粉絲蒸帶子">
+                <div class="food-card" data-dish-index="3">
+                  <img src="food8.png" alt="蒜蓉粉絲蒸帶子">
                     <div class="food-info">
                         <h3>蒜蓉粉絲蒸帶子</h3>
                         <p>帶子鮮甜爽口，粉絲吸盡精華</p>
-                       
+                     <span class="price-tag">私房菜菜式</span>  
                     </div>
                 </div>
             </div>
@@ -761,11 +765,12 @@
     <div id="reservation-section" class="info-section">
         <div class="info-card">
             <i class="fas fa-clock"></i>
-            <h4>營業時間</h4>
+            h4>營業時間</h4>
             <p>午市 12:00pm - 15:00pm<br>
             晚市 17:00pm - 21:30pm<br>
             週末及公眾假期照常營業<br>
             （逢星期二，三 休息) </p>
+
         </div>
         <div class="info-card">
             <i class="fas fa-map-marker-alt"></i>
@@ -774,10 +779,12 @@
         </div>
         <div class="info-card">
             <i class="fas fa-phone-alt"></i>
-            <h4>訂座專線</h4>
+           <h4>訂座專線</h4>
             <p>WhatsApp : 44 7708 108088<br>歡迎預約 團體聚餐 預訂私房菜</p>
             <a href="https://wa.me/447708108088" class="btn-reserve" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp" style="color: #073518;"></i> 立即訂座
+            
+            
             </a>
         </div>
     </div>
@@ -785,40 +792,38 @@
 
 <footer>
     <div class="container">
-        <p>© 2026 想點就點 · 傳承經典  | 用心製作每一道菜</p>
+        <p>© 2026 想點就點 · 傳承經典  | *點廚*用心製作每一道菜</p>
         <p style="margin-top: 8px; font-size: 0.7rem;">圖片為環境及菜式參考，實物以餐廳出品為準</p>
     </div>
 </footer>
 
+<!-- 通用輪播燈箱 -->
+<div id="carouselModal" class="carousel-modal">
+    <span class="close-carousel">&times;</span>
+    <div class="modal-container" id="modalContainer">
+        <img class="carousel-img" id="carouselImg" alt="放大圖片">
+        <div class="carousel-nav">
+            <button id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
+            <button id="carouselNext"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-counter" id="carouselCounter">1 / 3</div>
+    </div>
+</div>
+
 <!-- 大廚圖片放大燈箱 -->
 <div id="chefModal" class="chef-modal">
     <span class="close-chef-modal">&times;</span>
-    <img class="chef-modal-content" id="chefModalImg" alt="logo">
-</div>
-
-<!-- 餐牌輪播模態框 -->
-<div id="imageModal" class="modal">
-    <span class="close-modal">&times;</span>
-    <div class="modal-container">
-        <img class="modal-img" id="modalImg" alt="餐牌放大">
-        <div class="modal-nav">
-            <button id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-            <button id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        <div class="modal-counter" id="imgCounter">1 / 3</div>
-    </div>
+    <img class="chef-modal-content" id="chefModalImg" alt="大廚張師傅">
 </div>
 
 <script>
     (function() {
-        // ---------- logo圖片放大功能 ----------
+        // 大廚放大
         const chefPhotoDiv = document.getElementById('chefPhoto');
         const chefModal = document.getElementById('chefModal');
         const chefModalImg = document.getElementById('chefModalImg');
         const closeChefModal = document.querySelector('.close-chef-modal');
-        // logo高清圖片（使用原圖更高解析度）
         const chefHighRes = "logo2.png";
-        
         function openChefModal() {
             chefModalImg.src = chefHighRes;
             chefModal.style.display = 'flex';
@@ -828,28 +833,20 @@
             chefModal.style.display = 'none';
             document.body.style.overflow = '';
         }
-        if (chefPhotoDiv) {
-            chefPhotoDiv.addEventListener('click', openChefModal);
-        }
+        chefPhotoDiv.addEventListener('click', openChefModal);
         closeChefModal.addEventListener('click', closeChefModalFunc);
-        chefModal.addEventListener('click', (e) => {
-            if (e.target === chefModal) closeChefModalFunc();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (chefModal.style.display === 'flex' && e.key === 'Escape') closeChefModalFunc();
-        });
+        chefModal.addEventListener('click', (e) => { if (e.target === chefModal) closeChefModalFunc(); });
+        document.addEventListener('keydown', (e) => { if (chefModal.style.display === 'flex' && e.key === 'Escape') closeChefModalFunc(); });
 
-        // ---------- 導航滾動邏輯 ----------
+        // 導航滾動
         const header = document.getElementById('main-header');
         const getHeaderHeight = () => header ? header.offsetHeight : 85;
-
         function scrollToElement(element) {
             if (!element) return;
             const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
             const offsetPosition = elementPosition - getHeaderHeight() - 16;
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
-
         const sections = {
             home: null,
             dimsum: document.getElementById('dimsum-section'),
@@ -857,32 +854,21 @@
             menuboard: document.getElementById('menu-board-area'),
             reservation: document.getElementById('reservation-section')
         };
-
         const navLinks = document.querySelectorAll('.nav-links a');
-        function removeActive() {
-            navLinks.forEach(link => link.classList.remove('active'));
-        }
-
+        function removeActive() { navLinks.forEach(link => link.classList.remove('active')); }
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = this.getAttribute('data-scroll');
                 removeActive();
                 this.classList.add('active');
-                if (target === 'home') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else if (target === 'dimsum' && sections.dimsum) {
-                    scrollToElement(sections.dimsum);
-                } else if (target === 'dishes' && sections.dishes) {
-                    scrollToElement(sections.dishes);
-                } else if (target === 'menuboard' && sections.menuboard) {
-                    scrollToElement(sections.menuboard);
-                } else if (target === 'reservation' && sections.reservation) {
-                    scrollToElement(sections.reservation);
-                }
+                if (target === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+                else if (target === 'dimsum' && sections.dimsum) scrollToElement(sections.dimsum);
+                else if (target === 'dishes' && sections.dishes) scrollToElement(sections.dishes);
+                else if (target === 'menuboard' && sections.menuboard) scrollToElement(sections.menuboard);
+                else if (target === 'reservation' && sections.reservation) scrollToElement(sections.reservation);
             });
         });
-
         function updateActiveOnScroll() {
             const scrollPos = window.scrollY + getHeaderHeight() + 80;
             let activeId = 'home';
@@ -900,105 +886,129 @@
         window.addEventListener('scroll', updateActiveOnScroll);
         updateActiveOnScroll();
 
-        // ---------- 獨立餐牌相冊：午市3張 / 晚市3張 ----------
-        const lunchImages = [
-            "lunchmeun1.jpg",
-            "lunchmenu2.jpg",
-            "lunchmenu3.jpg"
-        ];
-        const dinnerImages = [
-            "dinnermeun1.jpg",
-            "dinnermeun2.jpg",
-            "dinnermeun3.jpg"
-        ];
-
+        // 通用輪播功能 + 觸控滑動支援
+        const carouselModal = document.getElementById('carouselModal');
+        const modalContainer = document.getElementById('modalContainer');
+        const carouselImg = document.getElementById('carouselImg');
+        const closeCarousel = document.querySelector('.close-carousel');
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+        const counterSpan = document.getElementById('carouselCounter');
         let currentGallery = [];
         let currentIndex = 0;
 
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImg');
-        const closeModalBtn = document.querySelector('#imageModal .close-modal');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const counterSpan = document.getElementById('imgCounter');
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50;
 
-        function updateModalImage() {
-            modalImg.style.opacity = '0';
+        function updateCarouselImage() {
+            carouselImg.style.opacity = '0';
             setTimeout(() => {
-                modalImg.src = currentGallery[currentIndex];
-                modalImg.style.opacity = '1';
+                carouselImg.src = currentGallery[currentIndex];
+                carouselImg.style.opacity = '1';
                 counterSpan.innerText = `${currentIndex + 1} / ${currentGallery.length}`;
             }, 150);
         }
-
-        function openGallery(galleryArray, startIndex = 0) {
+        function openCarousel(galleryArray, startIndex = 0) {
+            if (!galleryArray.length) return;
             currentGallery = galleryArray;
             currentIndex = startIndex;
-            updateModalImage();
-            modal.style.display = 'flex';
+            updateCarouselImage();
+            carouselModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-
-        function closeModal() {
-            modal.style.display = 'none';
+        function closeCarouselModal() {
+            carouselModal.style.display = 'none';
             document.body.style.overflow = '';
         }
+        function nextImage() { if (currentGallery.length) { currentIndex = (currentIndex + 1) % currentGallery.length; updateCarouselImage(); } }
+        function prevImage() { if (currentGallery.length) { currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length; updateCarouselImage(); } }
 
-        function nextImage() {
-            if (!currentGallery.length) return;
-            currentIndex = (currentIndex + 1) % currentGallery.length;
-            updateModalImage();
-        }
-
-        function prevImage() {
-            if (!currentGallery.length) return;
-            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-            updateModalImage();
-        }
-
-        const lunchCard = document.querySelector('.session-card[data-gallery="lunch"]');
-        const dinnerCard = document.querySelector('.session-card[data-gallery="dinner"]');
-
-        if (lunchCard) {
-            const lunchPhoto = lunchCard.querySelector('.menu-photo');
-            lunchPhoto.addEventListener('click', (e) => {
-                e.stopPropagation();
-                openGallery(lunchImages, 0);
-            });
-        }
-
-        if (dinnerCard) {
-            const dinnerPhoto = dinnerCard.querySelector('.menu-photo');
-            dinnerPhoto.addEventListener('click', (e) => {
-                e.stopPropagation();
-                openGallery(dinnerImages, 0);
-            });
-        }
-
-        prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            prevImage();
-        });
-        nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            nextImage();
-        });
-        closeModalBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
+        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+        closeCarousel.addEventListener('click', closeCarouselModal);
+        carouselModal.addEventListener('click', (e) => { if (e.target === carouselModal) closeCarouselModal(); });
         document.addEventListener('keydown', (e) => {
-            if (modal.style.display === 'flex') {
+            if (carouselModal.style.display === 'flex') {
                 if (e.key === 'ArrowLeft') prevImage();
                 else if (e.key === 'ArrowRight') nextImage();
-                else if (e.key === 'Escape') closeModal();
+                else if (e.key === 'Escape') closeCarouselModal();
             }
         });
 
-        [...lunchImages, ...dinnerImages].forEach(src => {
-            const img = new Image();
-            img.src = src;
+        // 觸控滑動
+        modalContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        modalContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const deltaX = touchEndX - touchStartX;
+            if (Math.abs(deltaX) > minSwipeDistance) {
+                if (deltaX > 0) prevImage();
+                else nextImage();
+            }
+            touchStartX = 0;
+            touchEndX = 0;
         });
+
+        // ---------- 擴充所有輪播圖片至至少 12 張 ----------
+        // 點心圖片集 (12張)
+        const dimsumImages = [
+            "food1.png",
+            "food2.png",
+            "food3.png",
+            "food4.png",
+            
+           
+        ];
+        // 小菜圖片集 (12張)
+        const dinnerDishImages = [
+            "food5.png",
+            "food6.png",
+            "food7.png",
+            "food8.png",
+                      
+        ];
+        // 環境圖片集 (12張)
+        const envImages = [
+            "fp00.png",
+            "fp1.png",
+            "fp2.png",
+            
+           
+        ];
+        // 午市餐牌圖片集 (12張)
+        const lunchMenuImages = [
+            "lunchmeun1.jpg",
+            "lunchmenu2.jpg",
+            "lunchmenu3.jpg",
+           
+        ];
+        // 晚市餐牌圖片集 (12張)
+        const dinnerMenuImages = [
+            "dinnermeun1.jpg",
+            "dinnermeun2.jpg",
+            "dinnermeun3.jpg",
+            
+        ];
+
+        // 綁定點擊事件
+        const lunchCardPhoto = document.querySelector('.session-card[data-gallery="lunch"] .menu-photo');
+        const dinnerCardPhoto = document.querySelector('.session-card[data-gallery="dinner"] .menu-photo');
+        if (lunchCardPhoto) lunchCardPhoto.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(lunchMenuImages, 0); });
+        if (dinnerCardPhoto) dinnerCardPhoto.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(dinnerMenuImages, 0); });
+
+        const dimsumCards = document.querySelectorAll('#dimsumGrid .food-card');
+        dimsumCards.forEach((card, idx) => { card.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(dimsumImages, idx); }); });
+
+        const dinnerCards = document.querySelectorAll('#dinnerGrid .food-card');
+        dinnerCards.forEach((card, idx) => { card.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(dinnerDishImages, idx); }); });
+
+        const envItems = document.querySelectorAll('#environmentGrid .gallery-item');
+        envItems.forEach((item, idx) => { item.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(envImages, idx); }); });
+
+        // 預加載所有圖片
+        [...lunchMenuImages, ...dinnerMenuImages, ...dimsumImages, ...dinnerDishImages, ...envImages].forEach(src => { const img = new Image(); img.src = src; });
     })();
 </script>
 </body>
