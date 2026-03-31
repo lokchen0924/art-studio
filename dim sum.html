@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>想點就點 Dim Sum | 中式點心·小菜專門店</title>
-    <!-- Google Fonts 引入現代中文字體與英文字體 -->
+    <title>點廚 Dim Sum+Kitchen | 中式點心·小菜專門店</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (免費圖標庫) -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -17,32 +17,28 @@
 
         body {
             font-family: 'Noto Sans TC', 'Inter', sans-serif;
-            background-color: #0a0a0a; /* 黑色基底 */
+            background-color: #0a0a0a;
             color: #f0f0f0;
             line-height: 1.5;
             scroll-behavior: smooth;
         }
 
-        /* 主色調：橙 #F47C2E / 黑 #111 與 #1e1e1e */
         :root {
             --orange: #F47C2E;
             --orange-dark: #D9641A;
             --orange-light: #FF9F5C;
             --black-bg: #0B0B0B;
             --black-card: #141414;
-            --gray-border: #2A2A2A;
-            --text-light: #F5F5F5;
             --text-muted: #BCBCBC;
+            --header-height: 85px;
         }
 
-        /* 容器 */
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* 頭部區域 */
         header {
             background: linear-gradient(135deg, #0a0a0a 0%, #141414 100%);
             border-bottom: 2px solid var(--orange);
@@ -61,7 +57,6 @@
             gap: 20px;
         }
 
-        /* 餐廳名稱 + 大廚相片 (側邊) */
         .brand-chef {
             display: flex;
             align-items: center;
@@ -88,31 +83,30 @@
             margin-top: 4px;
         }
 
-        /* 大廚相片樣式 */
+        /* 大廚相片樣式，並添加游標為指針，表示可點擊 */
         .chef-photo {
             flex-shrink: 0;
+            cursor: pointer;
         }
-
         .chef-photo img {
             width: 85px;
             height: 85px;
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid var(--orange);
-            box-shadow: 0 8px 20px rgba(244, 124, 46, 0.3);
+            border: 3px solid var(--white);
+            box-shadow: 0 8px 20px rgba(241, 240, 239, 0.925);
             transition: transform 0.3s ease;
             background: #2c2c2c;
         }
-
         .chef-photo img:hover {
             transform: scale(1.02);
             border-color: var(--orange-light);
         }
 
-        /* 導航簡潔 */
         .nav-links {
             display: flex;
             gap: 28px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -121,7 +115,7 @@
             font-weight: 500;
             transition: 0.2s;
             font-size: 1rem;
-            letter-spacing: 1px;
+            cursor: pointer;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -130,7 +124,6 @@
             padding-bottom: 6px;
         }
 
-        /* 午市晚市標籤區塊 */
         .session-banner {
             background: linear-gradient(95deg, #1c1c1c 0%, #000000 100%);
             border-left: 6px solid var(--orange);
@@ -140,39 +133,73 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            align-items: center;
             gap: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
         .session-card {
+            flex: 1;
+            min-width: 240px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: space-between;
+            gap: 16px;
             background: rgba(0,0,0,0.6);
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 60px;
             backdrop-filter: blur(4px);
+            transition: all 0.2s;
         }
 
-        .session-card i {
+        .session-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .session-info i {
             font-size: 2.2rem;
             color: var(--orange);
         }
 
-        .session-info h3 {
-            font-size: 1.6rem;
+        .session-text h3 {
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--orange);
         }
 
-        .session-info p {
-            font-size: 1rem;
-            font-weight: 400;
+        .session-text p {
+            font-size: 0.85rem;
             color: #ddd;
         }
 
-        /* 通用標題 */
+        .menu-photo {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--orange);
+            background: #1e1e1e;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .menu-photo:hover {
+            transform: scale(1.03);
+            border-color: var(--orange-light);
+        }
+
+        .menu-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+
         .section-title {
             font-size: 2rem;
             font-weight: 700;
@@ -191,7 +218,6 @@
             border-radius: 4px;
         }
 
-        /* 環境相片網格 */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -205,7 +231,6 @@
             overflow: hidden;
             transition: 0.3s ease;
             border: 1px solid #2c2c2c;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.4);
         }
 
         .gallery-item:hover {
@@ -220,10 +245,6 @@
             object-fit: cover;
             display: block;
             transition: 0.4s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.02);
         }
 
         .gallery-caption {
@@ -241,7 +262,6 @@
             margin-top: 6px;
         }
 
-        /* 點心 & 小菜 雙欄區域 */
         .menu-showcase {
             display: flex;
             flex-direction: column;
@@ -270,7 +290,6 @@
             overflow: hidden;
             transition: all 0.25s;
             border: 1px solid #262626;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .food-card:hover {
@@ -282,7 +301,6 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            background: #2a2a2a;
         }
 
         .food-info {
@@ -299,7 +317,6 @@
         .food-info p {
             font-size: 0.85rem;
             color: #b0b0b0;
-            line-height: 1.4;
         }
 
         .price-tag {
@@ -313,7 +330,6 @@
             color: var(--orange);
         }
 
-        /* 預約/營業時間區塊 */
         .info-section {
             background: #0e0e0e;
             border-radius: 32px;
@@ -348,7 +364,9 @@
         }
 
         .btn-reserve {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: var(--orange);
             color: #111;
             font-weight: bold;
@@ -357,7 +375,6 @@
             text-decoration: none;
             margin-top: 20px;
             transition: 0.2s;
-            border: none;
             font-size: 1rem;
         }
 
@@ -367,7 +384,6 @@
             box-shadow: 0 0 12px rgba(244,124,46,0.6);
         }
 
-        /* 頁腳 */
         footer {
             background: #030303;
             border-top: 1px solid var(--orange);
@@ -378,7 +394,139 @@
             font-size: 0.85rem;
         }
 
-        /* 響應式調整 */
+        /* 通用燈箱模態框 (給大廚圖片和餐牌共用基本樣式，但餐牌另有專用輪播) */
+        .chef-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            z-index: 1002;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .chef-modal-content {
+            max-width: 85vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 20px;
+            border: 3px solid var(--orange);
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+        }
+        .close-chef-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 1003;
+        }
+        .close-chef-modal:hover {
+            color: var(--orange);
+        }
+
+        /* 餐牌輪播燈箱 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: default;
+        }
+        .modal-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-img {
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 3px solid var(--orange);
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+            transition: opacity 0.2s ease-in-out;
+            opacity: 1;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: 0.2s;
+        }
+        .close-modal:hover {
+            color: var(--orange);
+        }
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+        .modal-nav button {
+            pointer-events: auto;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-nav button:hover {
+            background: var(--orange);
+            color: #111;
+            transform: scale(1.05);
+        }
+        .modal-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background: rgba(0,0,0,0.6);
+            display: inline-block;
+            margin: 0 auto;
+            width: fit-content;
+            padding: 6px 16px;
+            border-radius: 40px;
+            color: white;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+            pointer-events: none;
+        }
+
         @media (max-width: 768px) {
             .header-inner {
                 flex-direction: column;
@@ -390,13 +538,13 @@
             }
             .session-banner {
                 flex-direction: column;
-                align-items: flex-start;
             }
             .session-card {
                 width: 100%;
+                justify-content: space-between;
             }
-            .section-title {
-                font-size: 1.8rem;
+            .session-info {
+                flex: 1;
             }
             .restaurant-name h1 {
                 font-size: 1.6rem;
@@ -405,21 +553,34 @@
                 width: 70px;
                 height: 70px;
             }
+            :root {
+                --header-height: 125px;
+            }
+            .menu-photo {
+                width: 70px;
+                height: 70px;
+            }
+            .modal-nav button {
+                width: 36px;
+                height: 36px;
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
             .container {
                 padding: 0 16px;
             }
-            .brand-chef {
-                gap: 12px;
+            .session-card {
+                flex-wrap: wrap;
+                border-radius: 32px;
             }
-            .food-grid, .gallery-grid {
-                gap: 18px;
+            .menu-photo {
+                width: 65px;
+                height: 65px;
             }
         }
 
-        /* 自定義滾動條 */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -434,230 +595,411 @@
 </head>
 <body>
 
-<header>
+<header id="main-header">
     <div class="container header-inner">
-        <!-- 左側：餐廳名稱 + 大廚相片 (側邊) -->
         <div class="brand-chef">
             <div class="restaurant-name">
-                <h1>想點就點 <span style="color: var(--orange);">Dim Sum</span></h1>
-                <p>· 即蒸即製 · 鑊氣小菜 ·</p>
+                <h1>點廚 <br><span style="color: var(--orange);">Dim Sum+Kitchen</span></h1></br>
+                <p>· 即蒸即製點心 · 鑊氣巧手小菜 ·</p>
             </div>
-            <div class="chef-photo">
-                <!-- 大廚真實照片（免費圖庫pexels chef肖像，符合中式廚房意象） -->
-                <img src="fai.png"
-                     alt="大廚張師傅"
-                     title="行政總廚 - 張師傅">
+            <div class="chef-photo" id="chefPhoto">
+                <img src="logo2.png"
+                     alt="logo"
+                     title="logo">
             </div>
         </div>
         <div class="nav-links">
-            <a href="#" class="active">首頁</a>
-            <a href="#">點心精選</a>
-            <a href="#">小菜美饌</a>
-            <a href="#">訂座</a>
+            <a data-scroll="home">首頁</a>
+            <a data-scroll="dimsum">點心精選</a>
+            <a data-scroll="dishes">小菜美饌</a>
+            <a data-scroll="menuboard">餐牌</a>
+            <a data-scroll="reservation">訂座</a>
         </div>
     </div>
 </header>
 
 <main class="container">
-    <!-- 午市/晚市 資訊區塊 -->
-    <div class="session-banner">
-        <div class="session-card">
-            <i class="fas fa-sun"></i>
+    <div id="menu-board-area" class="session-banner">
+        <div class="session-card" data-gallery="lunch">
             <div class="session-info">
-                <h3>午市 · 點心盛宴</h3>
-                <p>每日 11:30 - 15:00 | 即叫即蒸 經典手工點心</p>
+                <i class="fas fa-sun"></i>
+                <div class="session-text">
+                    <h3>午市 · 點心即蒸即製</h3>
+                    <p>營業時間 12:00pm - 15:00pm | 即叫即蒸 經典手工點心</p>
+                </div>
+            </div>
+            <div class="menu-photo">
+                <img src="lunchmenu.png" 
+                     alt="午市點心餐牌">
             </div>
         </div>
-        <div class="session-card">
-            <i class="fas fa-moon"></i>
+        <div class="session-card" data-gallery="dinner">
             <div class="session-info">
-                <h3>晚市 · 鑊氣小菜</h3>
-                <p>每日 18:00 - 22:30 | 地道粵式小菜 惹味煲仔</p>
+                <i class="fas fa-moon"></i>
+                <div class="session-text">
+                    <h3>晚市 · 鑊氣巧手小菜</h3>
+                    <p>營業時間 17:00pm - 21:30pm | 鑊氣巧手 地道粵式小菜</p>
+                </div>
+            </div>
+            <div class="menu-photo">
+                <img src="dinnermeun.jpg" 
+                     alt="晚市小菜餐牌">
             </div>
         </div>
     </div>
 
-    <!-- 環境相片介紹 三張 -->
-    <div>
+    <div id="gallery">
         <h2 class="section-title">雅致環境 · 中式韻味</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=800&h=550&fit=crop" 
+                <img src="fp00.png" 
+                     alt="交通方便">
+                <div class="gallery-caption">
+                    📍 交通方便 
+                    <p>環境舒適</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="fp1.png" 
                      alt="典雅大廳 中式風格">
                 <div class="gallery-caption">
-                    📍 寬敞大廳 · 古典木飾
-                    <p>傳統與現代交織，舒適聚餐空間</p>
+                    📍 雅致環境 · 細味時光
+                    <p>優閒雅致，舒適聚餐空間</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800&h=550&fit=crop" 
-                     alt="半開放式包廂">
+                <img src="fp2.png" 
+                     alt="開放式大廳">
                 <div class="gallery-caption">
-                    🍂 半私密包廂 · 適合家庭聚會
-                    <p>禪意設計，典雅氛圍</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.pexels.com/photos/67468/chef-cook-man-kitchen-67468.jpeg?auto=compress&cs=tinysrgb&w=800&h=550&fit=crop" 
-                     alt="開放式廚房 明爐燒味">
-                <div class="gallery-caption">
-                    🔥 明檔廚房 · 即席烹調
+                    🍂 特定私房菜 · 適合家庭聚會
                     <p>新鮮食材，呈現真摯美味</p>
                 </div>
             </div>
+           
         </div>
     </div>
 
-    <!-- 點心及小菜照片區 (午市點心/晚市小菜分開展) -->
     <div class="menu-showcase">
-        <!-- 點心區 (午市) -->
-        <div class="menu-category">
+        <div id="dimsum-section" class="menu-category">
             <h2><i class="fas fa-dumpling" style="margin-right: 8px;"></i> 午市巧手點心</h2>
             <div class="food-grid">
                 <div class="food-card">
-                    <img src="蝦餃.png" 
-                         alt="水晶蝦餃皇">
+                    <img src="food1.png" alt="明蝦角">
                     <div class="food-info">
-                        <h3>水晶蝦餃皇</h3>
-                        <p>原隻大蝦，薄皮透亮，鮮甜爽彈</p>
-                        <span class="price-tag">午市精選 $48</span>
+                        <h3>明蝦角</h3>
+                        <p>原隻大蝦，口感爽脆鮮甜</p>
+                       
                     </div>
                 </div>
                 <div class="food-card">
-                    <img src="燒賣.png" 
-                         alt="蟹籽燒賣皇">
+                    <img src="food2.png" alt="蟹籽燒賣皇">
                     <div class="food-info">
                         <h3>蟹籽燒賣皇</h3>
                         <p>豬肉與鮮蝦完美比例，蟹籽點綴</p>
-                        <span class="price-tag">午市必點 $42</span>
+                        
                     </div>
                 </div>
                 <div class="food-card">
-                    <img src="叉燒包.jpg" 
-                         alt="蜜汁叉燒包">
+                    <img src="food3.png" alt="XO醬炒蘿蔔糕">
                     <div class="food-info">
-                        <h3>蜜汁叉燒包</h3>
-                        <p>軟綿麵皮，甜香叉燒內餡</p>
-                        <span class="price-tag">傳統滋味 $38</span>
+                        <h3>XO醬炒蘿蔔糕</h3>
+                        <p>外層香脆，內裡清甜軟糯</p>
+                        
                     </div>
                 </div>
                 <div class="food-card">
-                    <img src="蛋達仔.jpg" 
-                         alt="酥皮蛋撻仔">
+                    <img src="food4.png" alt="燒鴨湯瀨粉">
                     <div class="food-info">
-                        <h3>酥皮蛋撻仔</h3>
-                        <p>層層酥脆，蛋香濃郁 飯後甜點</p>
-                        <span class="price-tag">$28 / 兩件</span>
+                        <h3>燒鴨湯瀨粉</h3>
+                        <p>琥珀皮色，鮮嫩多汁</p>
+                    <span class="price-tag">午市必點</span>   
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 小菜區 (晚市) -->
-        <div class="menu-category">
+        <div id="dishes-section" class="menu-category">
             <h2><i class="fas fa-utensils" style="margin-right: 8px;"></i> 晚市鑊氣小菜</h2>
             <div class="food-grid">
                 <div class="food-card">
-                    <img src="川味宮保雞丁.jpg" 
-                         alt="宮保雞丁">
+                    <img src="food5.png">
                     <div class="food-info">
-                        <h3>川味宮保雞丁</h3>
-                        <p>香辣惹味，花生脆口，雞肉嫩滑</p>
-                        <span class="price-tag">晚市推介 $108</span>
+                        <h3>肉絲脆麵</h3>
+                        <p>惹味脆口，肉絲嫩滑多汁</p>
+                        <span class="price-tag">人氣推介</span>
+                        
                     </div>
                 </div>
-                <div class="food-card">
-                    <img src="金銀蒜炒時蔬.png" 
-                         alt="蒜蓉炒時蔬">
+               <div class="food-card">
+                    <img src="food6.png" alt="波蘿咕嚕肉">
                     <div class="food-info">
-                        <h3>金銀蒜炒時蔬</h3>
-                        <p>時令蔬菜，大火快炒，清爽解膩</p>
-                        <span class="price-tag">$68</span>
+                        <h3>波蘿咕嚕肉</h3>
+                        <p>菠蘿解膩提鮮，咕嚕肉酥脆不油膩</p>
+                       
                     </div>
                 </div>
-                <div class="food-card">
-                    <img src="豉汁排骨煲仔飯.jpg" 
-                         alt="豉汁蒸排骨">
+              <div class="food-card">
+                    <img src="food7.png" alt="紫菜墨魚餅">
                     <div class="food-info">
-                        <h3>豉汁排骨煲仔飯</h3>
-                        <p>經典煲仔，豆豉蒜香，飯焦香脆</p>
-                        <span class="price-tag">$98</span>
+                        <h3>紫菜墨魚餅</h3>
+                        <p>外皮酥脆，墨魚肉紫菜包覆，香氣加倍</p>
+                       
                     </div>
                 </div>
-                <div class="food-card">
-                    <img src="牛柳粒.jpg" 
-                         alt="黑椒牛柳粒">
+              <div class="food-card">
+                    <img src="food8.png" alt="蒜蓉粉絲蒸帶子">
                     <div class="food-info">
-                        <h3>黑椒安格斯牛柳粒</h3>
-                        <p>濃郁黑椒醬汁，牛肉軟腍多汁</p>
-                        <span class="price-tag">$168</span>
+                        <h3>蒜蓉粉絲蒸帶子</h3>
+                        <p>帶子鮮甜爽口，粉絲吸盡精華</p>
+                       
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 額外介紹 + 預約資訊 與 營業時間 -->
-    <div class="info-section">
+    <div id="reservation-section" class="info-section">
         <div class="info-card">
             <i class="fas fa-clock"></i>
             <h4>營業時間</h4>
-            <p>午市 11:30 - 15:00 (最後點心點單14:30)<br>
-            晚市 18:00 - 22:30 (最後小菜點單21:45)<br>
-            週末及公眾假期照常營業</p>
+            <p>午市 12:00pm - 15:00pm<br>
+            晚市 17:00pm - 21:30pm<br>
+            週末及公眾假期照常營業<br>
+            （逢星期二，三 休息) </p>
         </div>
         <div class="info-card">
             <i class="fas fa-map-marker-alt"></i>
-            <h4>地址</h4>
-            <p>英國<br>地下<br>(近出口)</p>
+            <h4>地址 Address</Address></h4>
+            <p>📍111 Park Rd, Saint Helens WA9 1ER</p>
         </div>
         <div class="info-card">
             <i class="fas fa-phone-alt"></i>
             <h4>訂座專線</h4>
-            <p>+44 7708 108088<br>WhatsApp : +44 7708 108088<br>歡迎預約 團體聚餐</p>
-            <a href="#" class="btn-reserve">立即訂座 <i class="fas fa-arrow-right"></i></a>
+            <p>WhatsApp : 44 7708 108088<br>歡迎預約 團體聚餐 預訂私房菜</p>
+            <a href="https://wa.me/447708108088" class="btn-reserve" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp" style="color: #073518;"></i> 立即訂座
+            </a>
         </div>
     </div>
 </main>
 
 <footer>
     <div class="container">
-        <p>© 2025 想點就點 Dim Sum · 傳承經典 創新粵味 | 用心製作每一道點心與小菜</p>
+        <p>© 2026 想點就點 · 傳承經典  | 用心製作每一道菜</p>
         <p style="margin-top: 8px; font-size: 0.7rem;">圖片為環境及菜式參考，實物以餐廳出品為準</p>
     </div>
 </footer>
 
-<!-- 簡單的平滑錨點輔助與頁面互動（純裝飾） -->
+<!-- 大廚圖片放大燈箱 -->
+<div id="chefModal" class="chef-modal">
+    <span class="close-chef-modal">&times;</span>
+    <img class="chef-modal-content" id="chefModalImg" alt="logo">
+</div>
+
+<!-- 餐牌輪播模態框 -->
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-container">
+        <img class="modal-img" id="modalImg" alt="餐牌放大">
+        <div class="modal-nav">
+            <button id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+            <button id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="modal-counter" id="imgCounter">1 / 3</div>
+    </div>
+</div>
+
 <script>
-    // 讓所有導航欄點擊平滑移動（示範功能，無實際跳轉段落可做保留效果）
-    document.querySelectorAll('.nav-links a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            // 此處不做實際跳轉 僅做演示active效果，但為體驗保留輕提示
-            e.preventDefault();
-            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            this.classList.add('active');
-            // 簡單滾動至頂部或不同區塊？為了體驗，點擊首頁回到頂部
-            if(this.innerText.includes('首頁')) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else if(this.innerText.includes('點心')) {
-                document.querySelector('.menu-category:first-child').scrollIntoView({ behavior: 'smooth' });
-            } else if(this.innerText.includes('小菜')) {
-                document.querySelector('.menu-category:last-child').scrollIntoView({ behavior: 'smooth' });
-            } else if(this.innerText.includes('訂座')) {
-                document.querySelector('.info-section').scrollIntoView({ behavior: 'smooth' });
+    (function() {
+        // ---------- logo圖片放大功能 ----------
+        const chefPhotoDiv = document.getElementById('chefPhoto');
+        const chefModal = document.getElementById('chefModal');
+        const chefModalImg = document.getElementById('chefModalImg');
+        const closeChefModal = document.querySelector('.close-chef-modal');
+        // logo高清圖片（使用原圖更高解析度）
+        const chefHighRes = "logo2.png";
+        
+        function openChefModal() {
+            chefModalImg.src = chefHighRes;
+            chefModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeChefModalFunc() {
+            chefModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        if (chefPhotoDiv) {
+            chefPhotoDiv.addEventListener('click', openChefModal);
+        }
+        closeChefModal.addEventListener('click', closeChefModalFunc);
+        chefModal.addEventListener('click', (e) => {
+            if (e.target === chefModal) closeChefModalFunc();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (chefModal.style.display === 'flex' && e.key === 'Escape') closeChefModalFunc();
+        });
+
+        // ---------- 導航滾動邏輯 ----------
+        const header = document.getElementById('main-header');
+        const getHeaderHeight = () => header ? header.offsetHeight : 85;
+
+        function scrollToElement(element) {
+            if (!element) return;
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - getHeaderHeight() - 16;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+
+        const sections = {
+            home: null,
+            dimsum: document.getElementById('dimsum-section'),
+            dishes: document.getElementById('dishes-section'),
+            menuboard: document.getElementById('menu-board-area'),
+            reservation: document.getElementById('reservation-section')
+        };
+
+        const navLinks = document.querySelectorAll('.nav-links a');
+        function removeActive() {
+            navLinks.forEach(link => link.classList.remove('active'));
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = this.getAttribute('data-scroll');
+                removeActive();
+                this.classList.add('active');
+                if (target === 'home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (target === 'dimsum' && sections.dimsum) {
+                    scrollToElement(sections.dimsum);
+                } else if (target === 'dishes' && sections.dishes) {
+                    scrollToElement(sections.dishes);
+                } else if (target === 'menuboard' && sections.menuboard) {
+                    scrollToElement(sections.menuboard);
+                } else if (target === 'reservation' && sections.reservation) {
+                    scrollToElement(sections.reservation);
+                }
+            });
+        });
+
+        function updateActiveOnScroll() {
+            const scrollPos = window.scrollY + getHeaderHeight() + 80;
+            let activeId = 'home';
+            if (sections.menuboard && scrollPos >= sections.menuboard.offsetTop) activeId = 'menuboard';
+            if (sections.dimsum && scrollPos >= sections.dimsum.offsetTop) activeId = 'dimsum';
+            if (sections.dishes && scrollPos >= sections.dishes.offsetTop) activeId = 'dishes';
+            if (sections.reservation && scrollPos >= sections.reservation.offsetTop) activeId = 'reservation';
+            if (window.scrollY < 120) activeId = 'home';
+            navLinks.forEach(link => {
+                const target = link.getAttribute('data-scroll');
+                if (target === activeId) link.classList.add('active');
+                else link.classList.remove('active');
+            });
+        }
+        window.addEventListener('scroll', updateActiveOnScroll);
+        updateActiveOnScroll();
+
+        // ---------- 獨立餐牌相冊：午市3張 / 晚市3張 ----------
+        const lunchImages = [
+            "lunchmeun1.jpg",
+            "lunchmenu2.jpg",
+            "lunchmenu3.jpg"
+        ];
+        const dinnerImages = [
+            "dinnermeun1.jpg",
+            "dinnermeun2.jpg",
+            "dinnermeun3.jpg"
+        ];
+
+        let currentGallery = [];
+        let currentIndex = 0;
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const closeModalBtn = document.querySelector('#imageModal .close-modal');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counterSpan = document.getElementById('imgCounter');
+
+        function updateModalImage() {
+            modalImg.style.opacity = '0';
+            setTimeout(() => {
+                modalImg.src = currentGallery[currentIndex];
+                modalImg.style.opacity = '1';
+                counterSpan.innerText = `${currentIndex + 1} / ${currentGallery.length}`;
+            }, 150);
+        }
+
+        function openGallery(galleryArray, startIndex = 0) {
+            currentGallery = galleryArray;
+            currentIndex = startIndex;
+            updateModalImage();
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function nextImage() {
+            if (!currentGallery.length) return;
+            currentIndex = (currentIndex + 1) % currentGallery.length;
+            updateModalImage();
+        }
+
+        function prevImage() {
+            if (!currentGallery.length) return;
+            currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+            updateModalImage();
+        }
+
+        const lunchCard = document.querySelector('.session-card[data-gallery="lunch"]');
+        const dinnerCard = document.querySelector('.session-card[data-gallery="dinner"]');
+
+        if (lunchCard) {
+            const lunchPhoto = lunchCard.querySelector('.menu-photo');
+            lunchPhoto.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openGallery(lunchImages, 0);
+            });
+        }
+
+        if (dinnerCard) {
+            const dinnerPhoto = dinnerCard.querySelector('.menu-photo');
+            dinnerPhoto.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openGallery(dinnerImages, 0);
+            });
+        }
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            prevImage();
+        });
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            nextImage();
+        });
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (modal.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') prevImage();
+                else if (e.key === 'ArrowRight') nextImage();
+                else if (e.key === 'Escape') closeModal();
             }
         });
-    });
-    // 預約按鈕模擬提示
-    const btn = document.querySelector('.btn-reserve');
-    if(btn) {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('📞 歡迎致電 +44 7708 108088 預約，或親臨本店。期待您的光臨！');
+
+        [...lunchImages, ...dinnerImages].forEach(src => {
+            const img = new Image();
+            img.src = src;
         });
-    }
-    // 加載完後隨機動效 (錦上添花)
-    console.log('想點就點 Dim Sum — 以食會友');
+    })();
 </script>
 </body>
 </html>
