@@ -83,7 +83,7 @@
             margin-top: 4px;
         }
 
-        /* 大廚相片樣式 */
+        
         .chef-photo {
             flex-shrink: 0;
             cursor: pointer;
@@ -93,7 +93,6 @@
             height: 85px;
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid var(--orange);
             box-shadow: 0 8px 20px rgba(236, 233, 231, 0.897);
             transition: transform 0.3s ease;
             background: #2c2c2c;
@@ -398,7 +397,7 @@
             font-size: 0.85rem;
         }
 
-        /* 通用輪播燈箱（支援鍵盤和按鈕，無觸控滑動） */
+        
         .carousel-modal {
             display: none;
             position: fixed;
@@ -495,7 +494,7 @@
             pointer-events: none;
         }
 
-        /* 大廚專用燈箱 */
+        
         .chef-modal {
             display: none;
             position: fixed;
@@ -789,7 +788,6 @@
     </div>
 </footer>
 
-<!-- 通用輪播燈箱 -->
 <div id="carouselModal" class="carousel-modal">
     <span class="close-carousel">&times;</span>
     <div class="modal-container" id="modalContainer">
@@ -802,7 +800,6 @@
     </div>
 </div>
 
-<!-- 大廚圖片放大燈箱 -->
 <div id="chefModal" class="chef-modal">
     <span class="close-chef-modal">&times;</span>
     <img class="chef-modal-content" id="chefModalImg" alt="大廚張師傅">
@@ -810,7 +807,7 @@
 
 <script>
     (function() {
-        // 大廚放大
+       
         const chefPhotoDiv = document.getElementById('chefPhoto');
         const chefModal = document.getElementById('chefModal');
         const chefModalImg = document.getElementById('chefModalImg');
@@ -830,7 +827,7 @@
         chefModal.addEventListener('click', (e) => { if (e.target === chefModal) closeChefModalFunc(); });
         document.addEventListener('keydown', (e) => { if (chefModal.style.display === 'flex' && e.key === 'Escape') closeChefModalFunc(); });
 
-        // 導航滾動
+        
         const header = document.getElementById('main-header');
         const getHeaderHeight = () => header ? header.offsetHeight : 85;
         function scrollToElement(element) {
@@ -878,7 +875,7 @@
         window.addEventListener('scroll', updateActiveOnScroll);
         updateActiveOnScroll();
 
-        // 通用輪播功能（僅保留按鈕和鍵盤，取消觸控滑動）
+       
         const carouselModal = document.getElementById('carouselModal');
         const modalContainer = document.getElementById('modalContainer');
         const carouselImg = document.getElementById('carouselImg');
@@ -924,9 +921,9 @@
             }
         });
 
-        // ---------- 觸控滑動功能已移除 ----------
+      
 
-        // 圖片集（所有輪播皆為12張）
+        
         const dimsumImages = [
             "food1.png",
             "food2.png",
