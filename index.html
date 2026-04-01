@@ -94,7 +94,7 @@
             object-fit: cover;
             border-radius: 50%;
             border: 3px solid var(--orange);
-            box-shadow: 0 8px 20px rgba(244, 124, 46, 0.3);
+            box-shadow: 0 8px 20px rgba(236, 233, 231, 0.897);
             transition: transform 0.3s ease;
             background: #2c2c2c;
         }
@@ -398,7 +398,7 @@
             font-size: 0.85rem;
         }
 
-        /* 通用輪播燈箱（支援滑動瀏覽） */
+        /* 通用輪播燈箱（支援鍵盤和按鈕，無觸控滑動） */
         .carousel-modal {
             display: none;
             position: fixed;
@@ -420,7 +420,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            touch-action: pan-y pinch-zoom;
         }
         .carousel-img {
             max-width: 90vw;
@@ -605,10 +604,10 @@
     <div class="container header-inner">
         <div class="brand-chef">
             <div class="restaurant-name">
-               <h1>點廚 <br><span style="color: var(--orange);">Dim Sum+Kitchen</span></h1></br>
+                <h1>點廚 <br><span style="color: var(--orange);">Dim Sum+Kitchen</span></h1>
                 <p>· 即蒸即製點心 · 鑊氣巧手小菜 ·</p>
             </div>
-              <div class="chef-photo" id="chefPhoto">
+            <div class="chef-photo" id="chefPhoto">
                 <img src="logo2.png"
                      alt="logo"
                      title="logo">
@@ -643,12 +642,12 @@
             <div class="session-info">
                 <i class="fas fa-moon"></i>
                 <div class="session-text">
-                       <h3>晚市 · 鑊氣巧手小菜</h3>
+                    <h3>晚市 · 鑊氣巧手小菜</h3>
                     <p>營業時間 17:00pm - 21:30pm | 鑊氣巧手 地道粵式小菜</p>
                 </div>
             </div>
             <div class="menu-photo">
-                 <img src="dinnermenu.jpg" 
+                <img src="dinnermenu.jpg" 
                      alt="晚市小菜餐牌">
             </div>
         </div>
@@ -666,7 +665,7 @@
                 </div>
             </div>
             <div class="gallery-item" data-env-index="1">
-                <img src="fp1.png" 
+           <img src="fp1.png" 
                      alt="典雅大廳 中式風格">
                 <div class="gallery-caption">
                     📍 雅致環境 · 細味時光
@@ -674,7 +673,7 @@
                 </div>
             </div>
             <div class="gallery-item" data-env-index="2">
-                <img src="fp2.png" 
+              <img src="fp2.png" 
                      alt="開放式大廳">
                 <div class="gallery-caption">
                     🍂 特定私房菜 · 適合家庭聚會
@@ -689,31 +688,29 @@
             <h2><i class="fas fa-dumpling" style="margin-right: 8px;"></i> 午市巧手點心</h2>
             <div class="food-grid" id="dimsumGrid">
                 <div class="food-card" data-dish-index="0">
-                   <img src="food1.png" alt="明蝦角">
+                    <img src="food1.png" alt="明蝦角">
                     <div class="food-info">
                         <h3>明蝦角</h3>
                         <p>原隻大蝦，口感爽脆鮮甜</p>
-
+                        
                     </div>
                 </div>
                 <div class="food-card" data-dish-index="1">
-                    <img src="food2.png" alt="蟹籽燒賣皇">
+                   <img src="food2.png" alt="蟹籽燒賣皇">
                     <div class="food-info">
                         <h3>蟹籽燒賣皇</h3>
                         <p>完美比例，蟹籽點綴</p>
-
                     </div>
                 </div>
                 <div class="food-card" data-dish-index="2">
-                    <img src="food3.png" alt="XO醬炒蘿蔔糕">
+                 <img src="food3.png" alt="XO醬炒蘿蔔糕">
                     <div class="food-info">
                         <h3>XO醬炒蘿蔔糕</h3>
                         <p>外層香脆，內裡清甜軟糯</p>
-
                     </div>
                 </div>
                 <div class="food-card" data-dish-index="3">
-                    <img src="food4.png" alt="燒鴨湯瀨粉">
+                   <img src="food4.png" alt="燒鴨湯瀨粉">
                     <div class="food-info">
                         <h3>燒鴨湯瀨粉</h3>
                         <p>琥珀皮色，鮮嫩多汁</p>
@@ -727,7 +724,7 @@
             <h2><i class="fas fa-utensils" style="margin-right: 8px;"></i> 晚市鑊氣小菜</h2>
             <div class="food-grid" id="dinnerGrid">
                 <div class="food-card" data-dish-index="0">
-                     <img src="food5.png">
+                  <img src="food5.png">
                     <div class="food-info">
                         <h3>肉絲脆麵</h3>
                         <p>惹味脆口，肉絲嫩滑多汁</p>
@@ -735,27 +732,25 @@
                     </div>
                 </div>
                 <div class="food-card" data-dish-index="1">
-                     <img src="food6.png" alt="波蘿咕嚕肉">
+                  <img src="food6.png" alt="波蘿咕嚕肉">
                     <div class="food-info">
                         <h3>波蘿咕嚕肉</h3>
                         <p>菠蘿解膩提鮮，咕嚕肉酥脆不油膩</p>
-
                     </div>
                 </div>
                 <div class="food-card" data-dish-index="2">
-                   <img src="food7.png" alt="紫菜墨魚餅">
+            <img src="food7.png" alt="紫菜墨魚餅">
                     <div class="food-info">
                         <h3>紫菜墨魚餅</h3>
                         <p>外皮酥脆，墨魚肉紫菜包覆，香氣加倍</p>
-
                     </div>
                 </div>
                 <div class="food-card" data-dish-index="3">
-                  <img src="food8.png" alt="蒜蓉粉絲蒸帶子">
+                   <img src="food8.png" alt="蒜蓉粉絲蒸帶子">
                     <div class="food-info">
                         <h3>蒜蓉粉絲蒸帶子</h3>
                         <p>帶子鮮甜爽口，粉絲吸盡精華</p>
-                     <span class="price-tag">私房菜菜式</span>  
+                     <span class="price-tag">私房菜菜式</span> 
                     </div>
                 </div>
             </div>
@@ -770,21 +765,18 @@
             晚市 17:00pm - 21:30pm<br>
             週末及公眾假期照常營業<br>
             （逢星期二，三 休息) </p>
-
         </div>
         <div class="info-card">
             <i class="fas fa-map-marker-alt"></i>
-            <h3>地址 Address</Address></h3>
+            <h3>地址 Address</h3>
             <p>📍111 Park Rd, Saint Helens WA9 1ER</p>
         </div>
         <div class="info-card">
             <i class="fas fa-phone-alt"></i>
-           <h3>訂座專線</h3>
+            <h3>訂座專線</h3>
             <p>WhatsApp : 44 7708 108088<br>歡迎預約 團體聚餐 預訂私房菜</p>
             <a href="https://wa.me/447708108088" class="btn-reserve" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp" style="color: #073518;"></i> 立即訂座
-            
-            
             </a>
         </div>
     </div>
@@ -886,7 +878,7 @@
         window.addEventListener('scroll', updateActiveOnScroll);
         updateActiveOnScroll();
 
-        // 通用輪播功能 + 觸控滑動支援
+        // 通用輪播功能（僅保留按鈕和鍵盤，取消觸控滑動）
         const carouselModal = document.getElementById('carouselModal');
         const modalContainer = document.getElementById('modalContainer');
         const carouselImg = document.getElementById('carouselImg');
@@ -896,10 +888,6 @@
         const counterSpan = document.getElementById('carouselCounter');
         let currentGallery = [];
         let currentIndex = 0;
-
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const minSwipeDistance = 50;
 
         function updateCarouselImage() {
             carouselImg.style.opacity = '0';
@@ -936,32 +924,16 @@
             }
         });
 
-        // 觸控滑動
-        modalContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        modalContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const deltaX = touchEndX - touchStartX;
-            if (Math.abs(deltaX) > minSwipeDistance) {
-                if (deltaX > 0) prevImage();
-                else nextImage();
-            }
-            touchStartX = 0;
-            touchEndX = 0;
-        });
+        // ---------- 觸控滑動功能已移除 ----------
 
-        // ---------- 擴充所有輪播圖片至至少 12 張 ----------
-        // 點心圖片集 (12張)
+        // 圖片集（所有輪播皆為12張）
         const dimsumImages = [
             "food1.png",
             "food2.png",
             "food3.png",
             "food4.png",
             
-           
         ];
-        // 小菜圖片集 (12張)
         const dinnerDishImages = [
             "food5.png",
             "food6.png",
@@ -969,27 +941,20 @@
             "food8.png",
                       
         ];
-        // 環境圖片集 (12張)
         const envImages = [
             "fp00.png",
             "fp1.png",
             "fp2.png",
-            
-           
         ];
-        // 午市餐牌圖片集 (12張)
         const lunchMenuImages = [
             "lunchmeun1.jpg",
             "lunchmenu2.jpg",
             "lunchmenu3.jpg",
-           
         ];
-        // 晚市餐牌圖片集 (12張)
         const dinnerMenuImages = [
             "dinnermeun1.jpg",
             "dinnermeun2.jpg",
             "dinnermeun3.jpg",
-            
         ];
 
         // 綁定點擊事件
