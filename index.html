@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>點廚 Dim Sum+Kitchen | 中式點心·小菜專門店</title>
+    <title>想點就點 Dim Sum | 中式點心·小菜專門店</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 -->
@@ -83,7 +83,7 @@
             margin-top: 4px;
         }
 
-        
+        /* 大廚相片樣式 */
         .chef-photo {
             flex-shrink: 0;
             cursor: pointer;
@@ -93,7 +93,8 @@
             height: 85px;
             object-fit: cover;
             border-radius: 50%;
-            box-shadow: 0 8px 20px rgba(236, 233, 231, 0.897);
+            border: 3px solid var(--orange);
+            box-shadow: 0 8px 20px rgba(244, 124, 46, 0.3);
             transition: transform 0.3s ease;
             background: #2c2c2c;
         }
@@ -138,7 +139,7 @@
 
         .session-card {
             flex: 1;
-            min-width: 240px;
+            min-width: 220px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -277,6 +278,17 @@
             border-left: 5px solid var(--orange);
             padding-left: 18px;
             margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 筷子圖案裝飾 */
+        .chopsticks-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
         }
 
         .food-grid {
@@ -333,6 +345,52 @@
             color: var(--orange);
         }
 
+        /* 私房菜專用：純圖片 10 張網格（無文字） */
+        .private-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .private-photo-card {
+            background: #101010;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid #262626;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .private-photo-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-5px);
+            box-shadow: 0 18px 30px rgba(244,124,46,0.15);
+        }
+
+        .private-photo-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+            transition: transform 0.4s ease;
+        }
+
+        .private-photo-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .private-note {
+            margin-top: 18px;
+            padding: 14px 18px;
+            border-left: 4px solid var(--orange);
+            background: rgba(244,124,46,0.08);
+            border-radius: 12px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
         .info-section {
             background: #0e0e0e;
             border-radius: 32px;
@@ -366,12 +424,13 @@
             line-height: 1.5;
         }
 
-         /* 社交平台樣式 */
+        /* 社交平台樣式 */
         .social-links {
             display: flex;
             gap: 14px;
             margin-top: 16px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .social-links a {
@@ -396,6 +455,20 @@
             box-shadow: 0 6px 14px rgba(244, 124, 46, 0.4);
         }
 
+        /* 👆 請按提示 */
+        .tap-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--orange);
+            white-space: nowrap;
+        }
+        .tap-hint::before {
+            content: '👆';
+            font-size: 1rem;
+        }
 
         .btn-reserve {
             display: inline-flex;
@@ -428,7 +501,7 @@
             font-size: 0.85rem;
         }
 
-        
+        /* 通用輪播燈箱（支援鍵盤和按鈕，無觸控滑動） */
         .carousel-modal {
             display: none;
             position: fixed;
@@ -525,7 +598,7 @@
             pointer-events: none;
         }
 
-        
+        /* 大廚專用燈箱 */
         .chef-modal {
             display: none;
             position: fixed;
@@ -544,9 +617,8 @@
             max-height: 85vh;
             object-fit: contain;
             border-radius: 20px;
-            border: 3px solid #FF0000;
-            box-shadow: 0 0 10px #FF0000, 0 0 5px #FF0000;
-            box-shadow: 0 0 30px rgba(247, 244, 244, 0.925);
+            border: 3px solid var(--orange);
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
         }
         .close-chef-modal {
             position: absolute;
@@ -601,6 +673,16 @@
                 height: 36px;
                 font-size: 1.5rem;
             }
+            .private-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .private-photo-card img {
+                height: 140px;
+            }
+            .chopsticks-icon {
+                font-size: 1.4rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -614,6 +696,9 @@
             .menu-photo {
                 width: 65px;
                 height: 65px;
+            }
+            .private-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -635,19 +720,20 @@
     <div class="container header-inner">
         <div class="brand-chef">
             <div class="restaurant-name">
-                <h1>點廚 <br><span style="color: var(--orange);">Dim Sum+Kitchen</span></h1>
-                <p>· 即蒸即製點心 · 鑊氣巧手小菜 ·</p>
+                <h1>想點就點 <span style="color: var(--orange);">Dim Sum</span></h1>
+                <p>· 即蒸即製 · 鑊氣小菜 ·</p>
             </div>
             <div class="chef-photo" id="chefPhoto">
                 <img src="logo2.png"
-                     alt="logo"
-                     title="logo">
+                     alt="大廚張師傅"
+                     title="行政總廚 - 張師傅">
             </div>
         </div>
         <div class="nav-links">
             <a data-scroll="home">首頁</a>
             <a data-scroll="dimsum">點心精選</a>
             <a data-scroll="dishes">小菜美饌</a>
+            <a data-scroll="private">私房菜</a>
             <a data-scroll="menuboard">餐牌</a>
             <a data-scroll="reservation">訂座</a>
         </div>
@@ -660,12 +746,12 @@
             <div class="session-info">
                 <i class="fas fa-sun"></i>
                 <div class="session-text">
-                    <h3>午市 · 點心即蒸即製</h3>
-                    <p>營業時間 12:00pm - 15:00pm | 即叫即蒸 經典手工點心</p>
+                    <h3>午市 · 點心盛宴</h3>
+                    <p>每日 11:30 - 15:00 | 即叫即蒸 經典手工點心</p>
                 </div>
             </div>
             <div class="menu-photo">
-                <img src="lunchmenu.png" 
+                <img src="lunchmenu.png"
                      alt="午市點心餐牌">
             </div>
         </div>
@@ -673,8 +759,8 @@
             <div class="session-info">
                 <i class="fas fa-moon"></i>
                 <div class="session-text">
-                    <h3>晚市 · 鑊氣巧手小菜</h3>
-                    <p>營業時間 17:00pm - 21:30pm | 鑊氣巧手 地道粵式小菜</p>
+                    <h3>晚市 · 鑊氣小菜</h3>
+                    <p>每日 18:00 - 22:30 | 地道粵式小菜 惹味煲仔</p>
                 </div>
             </div>
             <div class="menu-photo">
@@ -691,7 +777,7 @@
                 </div>
             </div>
             <div class="menu-photo">
-                <img src="dinnermeun3.jpg" 
+                <img src="dinnermeun3.jpg"
                      alt="私房菜餐牌">
             </div>
         </div>
@@ -727,7 +813,7 @@
         </div>
     </div>
 
-    <div class="menu-showcase">
+    div class="menu-showcase">
         <div id="dimsum-section" class="menu-category">
             <h2><span style="margin-right: 12px; filter: drop-shadow(0 0 5px var(--orange));">
                 🥢</span></i> 午市巧手點心</h2>
@@ -765,7 +851,7 @@
             </div>
         </div>
 
-        <div id="dishes-section" class="menu-category">
+       <div id="dishes-section" class="menu-category">
             <h2><i class="fas fa-utensils" style="margin-right: 8px;"></i> 晚市鑊氣小菜</h2>
             <div class="food-grid" id="dinnerGrid">
                 <div class="food-card" data-dish-index="0">
@@ -802,7 +888,48 @@
         </div>
     </div>
 
-     <div id="reservation-section" class="info-section">
+
+         <!-- ===== 私房菜系列：10 張純圖片，無文字 ===== -->
+        <div id="private-section" class="menu-category">
+            <h2><i class="fas fa-crown" style="margin-right: 8px;"></i> 私房菜系列</h2>
+            <div class="private-grid" id="privateGrid">
+                <div class="private-photo-card" data-private-index="0">
+                    <img src="private1.png" alt="私房菜相片 1">
+                </div>
+                <div class="private-photo-card" data-private-index="1">
+                    <img src="private2.png" alt="私房菜相片 2">
+                </div>
+                <div class="private-photo-card" data-private-index="2">
+                    <img src="private3.png" alt="私房菜相片 3">
+                </div>
+                <div class="private-photo-card" data-private-index="3">
+                    <img src="private4.png" alt="私房菜相片 4">
+                </div>
+                <div class="private-photo-card" data-private-index="4">
+                    <img src="private5.png" alt="私房菜相片 5">
+                </div>
+                <div class="private-photo-card" data-private-index="5">
+                    <img src="private6.png" alt="私房菜相片 6">
+                </div>
+                <div class="private-photo-card" data-private-index="6">
+                    <img src="private7.png" alt="私房菜相片 7">
+                </div>
+                <div class="private-photo-card" data-private-index="7">
+                    <img src="private8.png" alt="私房菜相片 8">
+                </div>
+                <div class="private-photo-card" data-private-index="8">
+                    <img src="private9.png" alt="私房菜相片 9">
+                </div>                
+            </div>
+            <div class="private-note">
+                <i class="fas fa-info-circle" style="margin-right: 6px;"></i>
+                私房菜系列需提前預約，主廚按當日時令食材發辦，圖片僅供參考。歡迎致電或 WhatsApp 查詢詳情。
+            </div>
+        </div>
+        <!-- ===== 私房菜系列結束 ===== -->
+    </div>
+
+    <div id="reservation-section" class="info-section">
         <div class="info-card">
             <i class="fas fa-clock"></i>
             <h3>營業時間</h3>
@@ -822,8 +949,8 @@
                 </a>
                 <a href="https://www.instagram.com/dimsumkitchenst.helens/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
-                </a> 
-                 <h4><span style="color: rgba(255, 136, 0, 0.916);">👈 點擊前往</span></h4>
+                </a>
+                 <h4><span style="color: rgba(255, 136, 0, 0.916);">👈 點擊前往</span></h4>                
             </div>
         </div>
         <div class="info-card">
@@ -840,29 +967,16 @@
             </a>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </main>
 
 <footer>
     <div class="container">
-        <p>© 2026 想點就點 · 傳承經典  | *點廚*用心製作每一道菜</p>
+        <p>© 2026 想點就點 Dim Sum · 傳承經典 創新粵味 | 用心製作每一道點心與小菜</p>
         <p style="margin-top: 8px; font-size: 0.7rem;">圖片為環境及菜式參考，實物以餐廳出品為準</p>
     </div>
 </footer>
 
+<!-- 通用輪播燈箱 -->
 <div id="carouselModal" class="carousel-modal">
     <span class="close-carousel">&times;</span>
     <div class="modal-container" id="modalContainer">
@@ -875,6 +989,7 @@
     </div>
 </div>
 
+<!-- 大廚圖片放大燈箱 -->
 <div id="chefModal" class="chef-modal">
     <span class="close-chef-modal">&times;</span>
     <img class="chef-modal-content" id="chefModalImg" alt="大廚張師傅">
@@ -915,6 +1030,7 @@
             home: null,
             dimsum: document.getElementById('dimsum-section'),
             dishes: document.getElementById('dishes-section'),
+            private: document.getElementById('private-section'),
             menuboard: document.getElementById('menu-board-area'),
             reservation: document.getElementById('reservation-section')
         };
@@ -929,6 +1045,7 @@
                 if (target === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
                 else if (target === 'dimsum' && sections.dimsum) scrollToElement(sections.dimsum);
                 else if (target === 'dishes' && sections.dishes) scrollToElement(sections.dishes);
+                else if (target === 'private' && sections.private) scrollToElement(sections.private);
                 else if (target === 'menuboard' && sections.menuboard) scrollToElement(sections.menuboard);
                 else if (target === 'reservation' && sections.reservation) scrollToElement(sections.reservation);
             });
@@ -939,6 +1056,7 @@
             if (sections.menuboard && scrollPos >= sections.menuboard.offsetTop) activeId = 'menuboard';
             if (sections.dimsum && scrollPos >= sections.dimsum.offsetTop) activeId = 'dimsum';
             if (sections.dishes && scrollPos >= sections.dishes.offsetTop) activeId = 'dishes';
+            if (sections.private && scrollPos >= sections.private.offsetTop) activeId = 'private';
             if (sections.reservation && scrollPos >= sections.reservation.offsetTop) activeId = 'reservation';
             if (window.scrollY < 120) activeId = 'home';
             navLinks.forEach(link => {
@@ -999,7 +1117,7 @@
         // ---------- 觸控滑動功能已移除 ----------
 
         // 圖片集（所有輪播皆為12張）
-        const dimsumImages = [
+       const dimsumImages = [
             "food1.png",
             "food2.png",
             "food3.png",
@@ -1031,6 +1149,20 @@
             "dinnermeun3.jpg",
             "dinnermeun3b.jpg",
         ];
+       
+
+        // 私房菜 10 張圖片集
+        const privateDishImages = [
+            "private1.png",
+            "private2.png",
+            "private3.png",
+            "private4.png",
+            "private5.png",
+            "private6.png",
+            "private7.png",
+            "private8.png",
+            "private9.png",
+        ];
 
         // 綁定點擊事件
         const lunchCardPhoto = document.querySelector('.session-card[data-gallery="lunch"] .menu-photo');
@@ -1046,11 +1178,15 @@
         const dinnerCards = document.querySelectorAll('#dinnerGrid .food-card');
         dinnerCards.forEach((card, idx) => { card.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(dinnerDishImages, idx); }); });
 
+        // 私房菜純圖片卡片點擊 → 開啟 10 張輪播
+        const privateCards = document.querySelectorAll('#privateGrid .private-photo-card');
+        privateCards.forEach((card, idx) => { card.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(privateDishImages, idx); }); });
+
         const envItems = document.querySelectorAll('#environmentGrid .gallery-item');
         envItems.forEach((item, idx) => { item.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(envImages, idx); }); });
 
         // 預加載所有圖片
-        [...lunchMenuImages, ...dinnerMenuImages, ...privateMenuImages, ...dimsumImages, ...dinnerDishImages, ...envImages].forEach(src => { const img = new Image(); img.src = src; });
+        [...lunchMenuImages, ...dinnerMenuImages, ...privateMenuImages, ...dimsumImages, ...dinnerDishImages, ...privateDishImages, ...envImages].forEach(src => { const img = new Image(); img.src = src; });
     })();
 </script>
 </body>
