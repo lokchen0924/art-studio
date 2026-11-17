@@ -366,6 +366,37 @@
             line-height: 1.5;
         }
 
+         /* 社交平台樣式 */
+        .social-links {
+            display: flex;
+            gap: 14px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(244, 124, 46, 0.15);
+            border: 1px solid var(--orange);
+            color: var(--orange);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--orange);
+            color: #111;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 14px rgba(244, 124, 46, 0.4);
+        }
+
+
         .btn-reserve {
             display: inline-flex;
             align-items: center;
@@ -651,6 +682,19 @@
                      alt="晚市小菜餐牌">
             </div>
         </div>
+        <div class="session-card" data-gallery="private">
+            <div class="session-info">
+                <i class="fas fa-star"></i>
+                <div class="session-text">
+                    <h3>私房菜系列</h3>
+                    <p>需提前預約 | 主廚發辦 時令食材 匠心獨運</p>
+                </div>
+            </div>
+            <div class="menu-photo">
+                <img src="dinnermeun3.jpg" 
+                     alt="私房菜餐牌">
+            </div>
+        </div>
     </div>
 
     <div id="gallery">
@@ -758,29 +802,56 @@
         </div>
     </div>
 
-    <div id="reservation-section" class="info-section">
+     <div id="reservation-section" class="info-section">
         <div class="info-card">
             <i class="fas fa-clock"></i>
-            <h3>營業時間</h3>
+            <h4>營業時間</h4>
             <p>午市 12:00pm - 15:00pm<br>
             晚市 17:00pm - 21:30pm<br>
             週末及公眾假期照常營業<br>
             （逢星期二，三 休息) </p>
         </div>
         <div class="info-card">
+            <i class="fas fa-share-alt"></i>
+            <h4>社交平台</h4>
+            <p>追蹤我們的最新動態與優惠</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1EEiYaTfRN/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/dimsumkitchenst.helens/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>                
+            </div>
+        </div>
+        <div class="info-card">
             <i class="fas fa-map-marker-alt"></i>
-            <h3>地址 Address</h3>
-            <p>📍111 Park Rd, Saint Helens WA9 1ER</p>
+            <h4>地址</h4>
+             <p>📍111 Park Rd, Saint Helens WA9 1ER</p>
         </div>
         <div class="info-card">
             <i class="fas fa-phone-alt"></i>
-            <h3>訂座專線</h3>
+            <h4>訂座專線</h4>
             <p>WhatsApp : 44 7708 108088<br>歡迎預約 團體聚餐 預訂私房菜</p>
             <a href="https://wa.me/447708108088" class="btn-reserve" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-whatsapp" style="color: #073518;"></i> 立即訂座
             </a>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </main>
 
 <footer>
@@ -809,12 +880,12 @@
 
 <script>
     (function() {
-       
+        // 大廚放大
         const chefPhotoDiv = document.getElementById('chefPhoto');
         const chefModal = document.getElementById('chefModal');
         const chefModalImg = document.getElementById('chefModalImg');
         const closeChefModal = document.querySelector('.close-chef-modal');
-        const chefHighRes = "logo2.png";
+        const chefHighRes = "https://images.pexels.com/photos/67468/chef-cook-man-kitchen-67468.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1200&fit=crop";
         function openChefModal() {
             chefModalImg.src = chefHighRes;
             chefModal.style.display = 'flex';
@@ -829,7 +900,7 @@
         chefModal.addEventListener('click', (e) => { if (e.target === chefModal) closeChefModalFunc(); });
         document.addEventListener('keydown', (e) => { if (chefModal.style.display === 'flex' && e.key === 'Escape') closeChefModalFunc(); });
 
-        
+        // 導航滾動
         const header = document.getElementById('main-header');
         const getHeaderHeight = () => header ? header.offsetHeight : 85;
         function scrollToElement(element) {
@@ -877,7 +948,7 @@
         window.addEventListener('scroll', updateActiveOnScroll);
         updateActiveOnScroll();
 
-       
+        // 通用輪播功能（僅保留按鈕和鍵盤，取消觸控滑動）
         const carouselModal = document.getElementById('carouselModal');
         const modalContainer = document.getElementById('modalContainer');
         const carouselImg = document.getElementById('carouselImg');
@@ -923,47 +994,48 @@
             }
         });
 
-      
+        // ---------- 觸控滑動功能已移除 ----------
 
-        
+        // 圖片集（所有輪播皆為12張）
         const dimsumImages = [
             "food1.png",
             "food2.png",
             "food3.png",
             "food4.png",
-            
         ];
         const dinnerDishImages = [
             "food5.png",
             "food6.png",
             "food7.png",
             "food8.png",
-                      
         ];
         const envImages = [
             "fp00.png",
             "fp1.png",
-            "fp4.png",
-            "fp2.png",
-            "fp3.png",
-            
+            "fp4.png",            
+            "fp3.png",        
         ];
         const lunchMenuImages = [
             "lunchmeun1.jpg",
             "lunchmenu2.jpg",
             "lunchmenu3.jpg",
+            
         ];
         const dinnerMenuImages = [
             "dinnermeun1.jpg",
-            "dinnermeun2.jpg",
+            "dinnermeun2.jpg",            
+        ];
+        const privateMenuImages = [
             "dinnermeun3.jpg",
         ];
 
         // 綁定點擊事件
         const lunchCardPhoto = document.querySelector('.session-card[data-gallery="lunch"] .menu-photo');
         const dinnerCardPhoto = document.querySelector('.session-card[data-gallery="dinner"] .menu-photo');
+        const privateCardPhoto = document.querySelector('.session-card[data-gallery="private"] .menu-photo');
         if (lunchCardPhoto) lunchCardPhoto.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(lunchMenuImages, 0); });
         if (dinnerCardPhoto) dinnerCardPhoto.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(dinnerMenuImages, 0); });
+        if (privateCardPhoto) privateCardPhoto.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(privateMenuImages, 0); });
 
         const dimsumCards = document.querySelectorAll('#dimsumGrid .food-card');
         dimsumCards.forEach((card, idx) => { card.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(dimsumImages, idx); }); });
@@ -975,7 +1047,7 @@
         envItems.forEach((item, idx) => { item.addEventListener('click', (e) => { e.stopPropagation(); openCarousel(envImages, idx); }); });
 
         // 預加載所有圖片
-        [...lunchMenuImages, ...dinnerMenuImages, ...dimsumImages, ...dinnerDishImages, ...envImages].forEach(src => { const img = new Image(); img.src = src; });
+        [...lunchMenuImages, ...dinnerMenuImages, ...privateMenuImages, ...dimsumImages, ...dinnerDishImages, ...envImages].forEach(src => { const img = new Image(); img.src = src; });
     })();
 </script>
 </body>
